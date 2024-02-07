@@ -11,7 +11,7 @@ import SwiftData
 import SwiftUI
 
 enum ParametersDestinationView: String, Identifiable {
-    case verify
+    case defaultparameters, verify
     var id: String { rawValue }
 }
 
@@ -130,6 +130,16 @@ struct RsyncParametersView: View {
                 }
                 .help("Verify task")
             }
+
+            ToolbarItem {
+                Button {
+                    path.append(ParametersTasks(task: .defaultparameters))
+                } label: {
+                    Image(systemName: "house.fill")
+                }
+                .help("Default rsync parameters")
+            }
+
         })
         .navigationDestination(for: ParametersTasks.self) { which in
             makeView(view: which.task)
@@ -142,6 +152,8 @@ struct RsyncParametersView: View {
         switch view {
         case .verify:
             OutputRsyncView(output: rsyncoutput?.getoutput() ?? [])
+        case .defaultparameters:
+            RsyncDefaultParametersView(path: $path)
         }
     }
 
