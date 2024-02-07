@@ -18,12 +18,10 @@ struct ShowSSHCopyKeysView: View {
     var body: some View {
         HStack {
             List(selection: $selectedlogin) {
-                /*
-                 ForEach(rsyncUIdata.getuniqueserversandlogins() ?? []) { record in
-                     ServerRow(record: record)
-                         .tag(record)
-                 }
-                  */
+                ForEach(getuniqueserversandlogins ?? []) { record in
+                    ServerRow(record: record)
+                        .tag(record)
+                }
             }
             .frame(width: 250, height: 100)
 
@@ -53,6 +51,25 @@ struct ShowSSHCopyKeysView: View {
             Text("Copy public SSH key:")
         }
         .frame(width: 400, height: 100)
+    }
+
+    var getuniqueserversandlogins: [UniqueserversandLogins]? {
+        let configs = configurations.filter {
+            SharedReference.shared.synctasks.contains($0.task)
+        }
+        guard configurations.count > 0 else { return nil }
+        var uniqueserversandlogins = [UniqueserversandLogins]()
+        for i in 0 ..< configurations.count {
+            if configurations[i].offsiteUsername.isEmpty == false, configurations[i].offsiteServer.isEmpty == false {
+                let record = UniqueserversandLogins(configurations[i].offsiteUsername, configurations[i].offsiteServer)
+                if uniqueserversandlogins.filter({ ($0.offsiteUsername == record.offsiteUsername) &&
+                        ($0.offsiteServer == record.offsiteServer)
+                }).count == 0 {
+                    uniqueserversandlogins.append(record)
+                }
+            }
+        }
+        return uniqueserversandlogins
     }
 }
 
