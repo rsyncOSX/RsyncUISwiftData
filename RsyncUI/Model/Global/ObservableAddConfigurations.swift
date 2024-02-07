@@ -22,7 +22,6 @@ enum CannotUpdateSnaphotsError: LocalizedError {
 @Observable
 final class ObservableAddConfigurations {
     var profile: String = ""
-
     var localcatalog: String = ""
     var remotecatalog: String = ""
     var donotaddtrailingslash: Bool = false

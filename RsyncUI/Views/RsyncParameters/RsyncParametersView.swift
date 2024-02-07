@@ -81,6 +81,10 @@ struct RsyncParametersView: View {
                                 backup = false
                                 return
                             }
+                            guard selectedconfig?.parameter12 != "--backup" else {
+                                backup = true
+                                return
+                            }
                             parameters.setbackup()
                         }
 
@@ -90,12 +94,12 @@ struct RsyncParametersView: View {
                 ListofTasksLightView(selecteduuids: $selecteduuids)
                     .frame(maxWidth: .infinity)
                     .onChange(of: selecteduuids) {
-                        let selected = configurations.filter { config in
-                            selecteduuids.contains(config.id)
-                        }
-                        if selected.count == 1 {
-                            selectedconfig = selected[0]
-                            parameters.setvalues(selectedconfig)
+                        if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
+                            selectedconfig = configurations[index]
+                            parameters.setvalues(configurations[index])
+                            if configurations[index].parameter12 != "--backup" {
+                                backup = false
+                            }
                         } else {
                             selectedconfig = nil
                             parameters.setvalues(selectedconfig)

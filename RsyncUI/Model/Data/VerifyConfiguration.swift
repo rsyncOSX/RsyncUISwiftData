@@ -125,6 +125,11 @@ final class VerifyConfiguration: Connected {
     // Verify parameters for new config.
     func verify(_ data: AppendTask) -> SynchronizeConfiguration? {
         var newconfig = SynchronizeConfiguration()
+        if data.newprofile.isEmpty {
+            newconfig.profile = "Default profile"
+        } else {
+            newconfig.profile = data.newprofile
+        }
         newconfig.profile = data.newprofile
         newconfig.task = data.newtask
         newconfig.backupID = data.newbackupID ?? ""

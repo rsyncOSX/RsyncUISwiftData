@@ -64,8 +64,7 @@ struct Sidebar: View {
          }
           */
         case .snapshots:
-            Text("Snapshot")
-        // SnapshotsView(rsyncUIdata: rsyncUIdata)
+            SnapshotsView()
         case .synchronize:
             SidebarTasksView(selecteduuids: $selecteduuids)
         case .quick_synchronize:

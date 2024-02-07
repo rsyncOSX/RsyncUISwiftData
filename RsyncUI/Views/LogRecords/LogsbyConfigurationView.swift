@@ -34,6 +34,11 @@ struct LogsbyConfigurationView: View {
             HStack {
                 ListofTasksLightView(selecteduuids: $selecteduuids)
                     .onChange(of: selecteduuids) {
+                        if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
+                        } else {
+                            uuid = nil
+                        }
+
                         let selected = configurations.filter { config in
                             selecteduuids.contains(config.id)
                         }
@@ -44,8 +49,6 @@ struct LogsbyConfigurationView: View {
                             if selecteduuid.count == 1 {
                                 uuid = selecteduuid[0].id
                             }
-                        } else {
-                            uuid = nil
                         }
                     }
 

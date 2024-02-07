@@ -195,6 +195,7 @@ extension SnapshotsView {
         snapshotdata.snapshotuuidsfordelete.removeAll()
         guard SharedReference.shared.process == nil else { return }
         if let config = selectedconfig {
+            print(config.task)
             guard config.task == SharedReference.shared.snapshot else {
                 notsnapshot = true
                 // Show added for 1 second

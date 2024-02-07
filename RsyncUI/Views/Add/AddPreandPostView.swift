@@ -60,14 +60,17 @@ struct AddPreandPostView: View {
                     VStack(alignment: .leading) {
                         ListofTasksLightView(selecteduuids: $selecteduuids)
                             .onChange(of: selecteduuids) {
+                                if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
+                                } else {
+                                    selectedconfig = nil
+                                    parameters.updateview(selectedconfig)
+                                }
+
                                 let selected = configurations.filter { config in
                                     selecteduuids.contains(config.id)
                                 }
                                 if selected.count == 1 {
                                     selectedconfig = configurations[0]
-                                    parameters.updateview(selectedconfig)
-                                } else {
-                                    selectedconfig = nil
                                     parameters.updateview(selectedconfig)
                                 }
                             }

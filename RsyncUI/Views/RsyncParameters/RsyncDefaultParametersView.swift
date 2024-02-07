@@ -51,14 +51,17 @@ struct RsyncDefaultParametersView: View {
                 ListofTasksLightView(selecteduuids: $selecteduuids)
                     .frame(maxWidth: .infinity)
                     .onChange(of: selecteduuids) {
+                        if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
+                        } else {
+                            selectedconfig = nil
+                            parameters.setvalues(nil)
+                        }
+
                         let selected = configurations.filter { config in
                             selecteduuids.contains(config.id)
                         }
                         if selected.count == 1 {
                             selectedconfig = configurations[0]
-                            parameters.setvalues(selectedconfig)
-                        } else {
-                            selectedconfig = nil
                             parameters.setvalues(selectedconfig)
                         }
                     }

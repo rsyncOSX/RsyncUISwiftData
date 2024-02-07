@@ -97,15 +97,12 @@ struct AddTaskView: View {
                         VStack(alignment: .leading) {
                             ListofTasksAddView(selecteduuids: $selecteduuids)
                                 .onChange(of: selecteduuids) {
-                                    let selected = configurations.filter { config in
-                                        selecteduuids.contains(config.id)
-                                    }
-                                    if (selected.count) == 1 {
-                                        selectedconfig = selected[0]
-                                        parameters.updateview(selectedconfig)
+                                    if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
+                                        selectedconfig = configurations[index]
+                                        parameters.updateview(configurations[index])
                                     } else {
                                         selectedconfig = nil
-                                        parameters.updateview(selectedconfig)
+                                        parameters.updateview(nil)
                                     }
                                 }
                                 .copyable(copyitems.filter { selecteduuids.contains($0.id) })
@@ -240,9 +237,6 @@ struct AddTaskView: View {
     var setremotecatalogsyncremote: some View {
         EditValue(300, NSLocalizedString("Add local as remote catalog - required", comment: ""),
                   $parameters.remotecatalog)
-            .onChange(of: parameters.remotecatalog) {
-                parameters.remotestorageislocal = parameters.verifyremotestorageislocal()
-            }
     }
 
     var setlocalcatalog: some View {
@@ -260,10 +254,6 @@ struct AddTaskView: View {
             .textContentType(.none)
             .submitLabel(.continue)
     }
-
-    // Headers (in sections)
-
-    // Headers (in sections)
 
     var profile: some View {
         Text("Profile")
@@ -297,6 +287,9 @@ struct AddTaskView: View {
                                 parameters.localcatalog = catalog
                             }
                         })
+                        .onChange(of: parameters.localcatalog) {
+                            parameters.configuration?.localCatalog = parameters.localcatalog
+                        }
                 }
                 OpencatalogView(catalog: $parameters.localcatalog, choosecatalog: choosecatalog)
             }
@@ -312,6 +305,9 @@ struct AddTaskView: View {
                                 parameters.remotecatalog = catalog
                             }
                         })
+                        .onChange(of: parameters.remotecatalog) {
+                            parameters.configuration?.offsiteCatalog = parameters.remotecatalog
+                        }
                 }
                 OpencatalogView(catalog: $parameters.remotecatalog, choosecatalog: choosecatalog)
             }
