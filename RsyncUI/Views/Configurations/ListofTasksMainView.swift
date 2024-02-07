@@ -146,7 +146,7 @@ struct ListofTasksMainView: View {
             indexsetlogrecord.insert(index)
             modelContext.delete(logrecords[index])
         }
-        
+
         selecteduuids.removeAll()
     }
 
