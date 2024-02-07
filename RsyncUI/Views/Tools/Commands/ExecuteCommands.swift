@@ -12,7 +12,6 @@ struct ExecuteCommands: Commands {
     @FocusedBinding(\.startexecution) private var startexecution
     @FocusedBinding(\.firsttaskinfo) private var firsttaskinfo
     @FocusedBinding(\.aborttask) private var aborttask
-    @FocusedBinding(\.demodata) private var demodata
 
     var body: some Commands {
         CommandMenu("Tasks") {
@@ -22,10 +21,6 @@ struct ExecuteCommands: Commands {
             Divider()
 
             Abborttask(aborttask: $aborttask)
-
-            Divider()
-
-            DemoData(demodata: $demodata)
         }
     }
 }
@@ -95,19 +90,6 @@ struct Abborttask: View {
     }
 }
 
-struct DemoData: View {
-    @Binding var demodata: Bool?
-
-    var body: some View {
-        Button {
-            demodata = true
-        } label: {
-            Label("Load DemoData", systemImage: "play.fill")
-        }
-        .keyboardShortcut("l", modifiers: [.command])
-    }
-}
-
 struct FocusedEstimateBinding: FocusedValueKey {
     typealias Value = Binding<Bool>
 }
@@ -121,10 +103,6 @@ struct FocusedFirsttaskInfo: FocusedValueKey {
 }
 
 struct FocusedAborttask: FocusedValueKey {
-    typealias Value = Binding<Bool>
-}
-
-struct FocusedDemoData: FocusedValueKey {
     typealias Value = Binding<Bool>
 }
 
@@ -147,10 +125,5 @@ extension FocusedValues {
     var aborttask: FocusedAborttask.Value? {
         get { self[FocusedAborttask.self] }
         set { self[FocusedAborttask.self] = newValue }
-    }
-
-    var demodata: FocusedDemoData.Value? {
-        get { self[FocusedDemoData.self] }
-        set { self[FocusedDemoData.self] = newValue }
     }
 }

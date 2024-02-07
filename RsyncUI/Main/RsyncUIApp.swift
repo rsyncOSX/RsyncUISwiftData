@@ -39,6 +39,8 @@ struct RsyncUIApp: App {
 
             ExecuteCommands()
 
+            SnapshotCommands()
+
             CommandGroup(replacing: .help) {
                 Button(action: {
                     let documents: String = "https://rsyncui.netlify.app/"
