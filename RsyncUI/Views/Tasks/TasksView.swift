@@ -304,7 +304,6 @@ extension TasksView {
         selecteduuids.removeAll()
         estimatingstate.updatestate(state: .start)
         _ = InterruptProcess()
-
         focusstartestimation = false
         focusstartexecution = false
     }
