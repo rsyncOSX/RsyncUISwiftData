@@ -1,0 +1,438 @@
+/* (No Comment) */
+"Abort" = "Avbryt";
+
+/* No comment provided by engineer. */
+"Abort (⌘K)" = "Avbryt (⌘K)";
+
+/* No comment provided by engineer. */
+"Abort task" = "Avbryt oppgave";
+
+/* No comment provided by engineer. */
+"Add local as remote catalog - required" = "Legg til lokal som eksternkatalog - kreves";
+
+/* No comment provided by engineer. */
+"Add local catalog - required" = "Legg til lokalkatalog - kreves";
+
+/* No comment provided by engineer. */
+"Add posttask" = "Legg til postoppgave";
+
+/* No comment provided by engineer. */
+"Add pretask" = "Legg til preoppgave";
+
+/* No comment provided by engineer. */
+"Add profile" = "Ny profil";
+
+/* No comment provided by engineer. */
+"Add remote as local catalog - required" = "Legg til ekstern som lokal katalog - kreves";
+
+/* No comment provided by engineer. */
+"Add remote catalog - required" = "Legg til eksternkatalog - kreves";
+
+/* No comment provided by engineer. */
+"Add remote server" = "Legg til ekstern tjener";
+
+/* No comment provided by engineer. */
+"Add remote user" = "Legg til ekstern bruker";
+
+/* No comment provided by engineer. */
+"Add synchronize ID" = "Legg til synkroniserings ID";
+
+/* No comment provided by engineer. */
+"Add task" = "Legg til oppgave";
+
+/* No comment provided by engineer. */
+"Add tasks" = "Legg til oppgaver";
+
+/* No comment provided by engineer. */
+"Apple Silicon" = "Apple Silicon";
+
+/* No comment provided by engineer. */
+"Backup" = "Backup";
+
+/* No comment provided by engineer. */
+"Backup configurations" = "Lagre konfigurasjoner";
+
+/* No comment provided by engineer. */
+"Bytes" = "bytes";
+
+/* No comment provided by engineer. */
+"Cancel" = "Kanseler";
+
+/* No comment provided by engineer. */
+"Catalog parameters" = "Katalog parametre";
+
+/* No comment provided by engineer. */
+"Catalogs" = "Kataloger";
+
+/* No comment provided by engineer. */
+"Changed files: " = "Endrede filer:";
+
+/* No comment provided by engineer. */
+"Check for error in output" = "Sjekk for feil i utdata";
+
+/* No comment provided by engineer. */
+"Confirm execute" = "Bekreft synkroniser";
+
+/* No comment provided by engineer. */
+"Copy" = "Kopi";
+
+/* No comment provided by engineer. */
+"Copy configuration(s)" = "Kopi konfigurasjoner";
+
+/* No comment provided by engineer. */
+"Copyright ©2023 Thomas Evensen" = "Opphavsrett ©2023 Thomas Evensen";
+
+/* No comment provided by engineer. */
+"Create keys" = "Opprett nøkler";
+
+/* No comment provided by engineer. */
+"Create profile" = "Opprett profil";
+
+/* No comment provided by engineer. */
+"Date" = "Dato";
+
+/* No comment provided by engineer. */
+"Days" = "Dager";
+
+/* No comment provided by engineer. */
+"Default rsync parameters" = "Standard rsync parametre";
+
+/* No comment provided by engineer. */
+"Delete" = "Slett";
+
+/* No comment provided by engineer. */
+"Delete configuration(s)" = "Slette konfigurasjoner";
+
+/* No comment provided by engineer. */
+"Delete files: " = "Slett filer:";
+
+/* No comment provided by engineer. */
+"Delete profile" = "Slett profil";
+
+/* No comment provided by engineer. */
+"Delete snapshots(s)" = "Slette snapshot";
+
+/* No comment provided by engineer. */
+"deleted data. RsyncUI will NOT stop you from doing so. That is why it is very" = "i sletting av data. Og RsyncUI vil ikke hindre deg i det. Derfor er det";
+
+/* No comment provided by engineer. */
+"Deleting snapshots" = "Slette snapshots";
+
+/* No comment provided by engineer. */
+"Detailed log level" = "Detaljert log nivå";
+
+/* No comment provided by engineer. */
+"Don´t add /" = "Ikke legg til /";
+
+/* No comment provided by engineer. */
+"Download new version" = "Last ned ny versjon";
+
+/* No comment provided by engineer. */
+"Enable" = "Aktiver";
+
+/* No comment provided by engineer. */
+"Enable rsync daemon" = "Aktiver rsync daemon";
+
+/* No comment provided by engineer. */
+"Environment" = "Miljø";
+
+/* No comment provided by engineer. */
+"Environment variable" = "Miljømessig variabel";
+
+/* No comment provided by engineer. */
+"Estimate" = "Estimer";
+
+/* No comment provided by engineer. */
+"Estimate (⌘E)" = "Estimer (⌘E)";
+
+/* No comment provided by engineer. */
+"Filenames" = "Filnavn";
+
+/* No comment provided by engineer. */
+"Files" = "Filer";
+
+/* No comment provided by engineer. */
+"First task" = "Første oppgave";
+
+/* No comment provided by engineer. */
+"Full" = "Full";
+
+/* No comment provided by engineer. */
+"German translation by: Andre Voigtmann" = "Tysk oversettelse av: Andre Voigtmann";
+
+/* No comment provided by engineer. */
+"Get list of files for restore" = "Hent filenavn for opprett";
+
+/* No comment provided by engineer. */
+"Global ssh keypath and identityfile" = "Global ssh keypath og identifikasjonsfil";
+
+/* No comment provided by engineer. */
+"Global ssh port" = "Global ssh port";
+
+/* No comment provided by engineer. */
+"Halt on error" = "Stopp ved feil";
+
+/* No comment provided by engineer. */
+"Home catalogs" = "Hjemmekataloger";
+
+/* No comment provided by engineer. */
+"Icon by: Zsolt Sándor" = "Ikon av: Zsolt Sándor";
+
+/* No comment provided by engineer. */
+"Important" = "Viktig";
+
+/* No comment provided by engineer. */
+"important to execute a simulated run and inspect what happens before a real run." = "viktig å utføre en simulert kjøring og inspisere resultatet før synkronisering";
+
+/* No comment provided by engineer. */
+"Last" = "Siste";
+
+/* No comment provided by engineer. */
+"List tasks all profiles" = "Liste oppgaver alle profiler";
+
+/* No comment provided by engineer. */
+"Local catalog" = "Lokal katalog";
+
+/* No comment provided by engineer. */
+"Local catalog: " = "Lokal katalog:";
+
+/* No comment provided by engineer. */
+"Local ssh keys are present" = "Lokale ssh nøkler funnet";
+
+/* No comment provided by engineer. */
+"localhost" = "localhost";
+
+/* No comment provided by engineer. */
+"Log to file" = "Logg til fil";
+
+/* No comment provided by engineer. */
+"Logfile" = "Loggfil";
+
+/* No comment provided by engineer. */
+"Mark days :" = "Marker dager:";
+
+/* No comment provided by engineer. */
+"Min" = "Minimum";
+
+/* No comment provided by engineer. */
+"Monitor network" = "Overvåk nettverk";
+
+/* No comment provided by engineer. */
+"New" = "Ny";
+
+/* No comment provided by engineer. */
+"New files: " = "Nye filer:";
+
+/* No comment provided by engineer. */
+"New version" = "Ny versjon";
+
+/* No comment provided by engineer. */
+"New version is available" = "Ny versjon er tilgjengelig";
+
+/* No comment provided by engineer. */
+"No error" = "Ingen feil";
+
+/* No comment provided by engineer. */
+"None" = "Ingen";
+
+/* No comment provided by engineer. */
+"Norwegian translation by: Thomas Evensen" = "Norsk oversettelse av: Thomas Evensen";
+
+/* No comment provided by engineer. */
+"Not a snapshot task" = "Ikke en snapshot oppgave";
+
+/* No comment provided by engineer. */
+"Not verified" = "Ikke verifisert";
+
+/* No comment provided by engineer. */
+"Number of log records: " = "Antall logger:";
+
+/* No comment provided by engineer. */
+"Number of logrecords" = "Antall logger";
+
+/* No comment provided by engineer. */
+"OK" = "Ok";
+
+/* No comment provided by engineer. */
+"Changelog" = "Endringslogg";
+
+/* No comment provided by engineer. */
+"Other settings" = "Andre settinger";
+
+/* No comment provided by engineer. */
+"Output" = "Utdata";
+
+/* No comment provided by engineer. */
+"Path for restore" = "Sti for gjenoppretting";
+
+/* No comment provided by engineer. */
+"Please read and understand the information below. There is more info" = "Les og forstå informasjonen under. Det er mer info";
+
+/* No comment provided by engineer. */
+"Profile" = "Profil";
+
+/* No comment provided by engineer. */
+"Profiles" = "Profiler";
+
+/* No comment provided by engineer. */
+"Remote catalog" = "Ekstern katalog";
+
+/* No comment provided by engineer. */
+"Remote catalog: " = "Eksterne katalog:";
+
+/* No comment provided by engineer. */
+"Remote parameters" = "Eksterne parametere";
+
+/* No comment provided by engineer. */
+"Remote server" = "Ekstern tjener";
+
+/* No comment provided by engineer. */
+"Remote user" = "Ekstern bruker";
+
+/* No comment provided by engineer. */
+"Remove default rsync parameters" = "Slett standard rsync parametre";
+
+/* No comment provided by engineer. */
+"Reset estimates" = "Nulstille estimater";
+
+/* No comment provided by engineer. */
+"Reset logfile" = "Slett loggfil";
+
+/* No comment provided by engineer. */
+"Reset selections" = "Nullstille valg";
+
+/* No comment provided by engineer. */
+"Restore files" = "Kopier filer";
+
+/* No comment provided by engineer. */
+"Result" = "Resultat";
+
+/* No comment provided by engineer. */
+"Rsync output estimated task" = "Rsync logg estimert oppgave";
+
+/* No comment provided by engineer. */
+"Rsync v3.x" = "Rsync v3.x";
+
+/* No comment provided by engineer. */
+"Rsync version and path" = "Rsync versjon og sti";
+
+/* No comment provided by engineer. */
+"RsyncUI" = "RsyncUI";
+
+/* No comment provided by engineer. */
+"RsyncUI a GUI for rsync" = "RsyncUI et GUI for rsync";
+
+/* No comment provided by engineer. */
+"RsyncUI help" = "RsyncUI hjelp";
+
+/* No comment provided by engineer. */
+"Save settings" = "Lagre innstillinger";
+
+/* No comment provided by engineer. */
+"Save usersettings" = "Lagre brukervalg";
+
+/* No comment provided by engineer. */
+"Saved" = "Lagret";
+
+/* No comment provided by engineer. */
+"Select files to restore or \"./.\" for full restore" = "Velg filer for gjenoppretting, eller \"./.\" for full gjenoppretting";
+
+/* No comment provided by engineer. */
+"Select task" = "Velg oppgave";
+
+/* No comment provided by engineer. */
+"Selected logrecords for delete" = "Valgte log for å slette";
+
+/* No comment provided by engineer. */
+"selecting Important. Setting the wrong parameters to rsync can result in" = "under Viktig. Sette gale parametre til rsync kan resultere i";
+
+/* No comment provided by engineer. */
+"Server" = "Tjener";
+
+/* No comment provided by engineer. */
+"Server: " = "Tjener:";
+
+/* No comment provided by engineer. */
+"Shell commands" = "Skall kommando";
+
+/* No comment provided by engineer. */
+"Snap" = "Snap";
+
+/* No comment provided by engineer. */
+"Snapshots" = "Snapshots";
+
+/* No comment provided by engineer. */
+"Synchronize" = "Synkronisere";
+
+/* No comment provided by engineer. */
+"Synchronize (⌘R)" = "Utfør (⌘R)";
+
+/* No comment provided by engineer. */
+"Synchronize all tasks with NO estimating first?" = "Synkroniser alle oppgaver UTEN å estimere først?";
+
+/* No comment provided by engineer. */
+"Synchronize ID" = "Synkroniserings ID";
+
+/* No comment provided by engineer. */
+"Synchronize ID: " = "Synkroniserings ID:";
+
+/* No comment provided by engineer. */
+"Synchronize tasks?" = "Synkronisere oppgaver?";
+
+/* No comment provided by engineer. */
+"Tag" = "Tag";
+
+/* No comment provided by engineer. */
+"Tag snapshot" = "Tagg snapshot";
+
+/* No comment provided by engineer. */
+"Task" = "Oppgave";
+
+/* No comment provided by engineer. */
+"Task: " = "Oppgave:";
+
+/* No comment provided by engineer. */
+"Tasks" = "Oppgaver";
+
+/* No comment provided by engineer. */
+"There are no logs by this filter" = "Det er ingen logger med dette søk";
+
+/* No comment provided by engineer. */
+"There are no tasks by this Synchronize ID" = "Det er ingen oppgaver med denne Synchronize ID";
+
+/* No comment provided by engineer. */
+"There seems to be no data to synchronize" = "Det synes ikke å være data for synkronisering";
+
+/* No comment provided by engineer. */
+"Tot bytes" = "Tot bytes";
+
+/* No comment provided by engineer. */
+"Tot dir" = "Tot dir";
+
+/* No comment provided by engineer. */
+"Tot num" = "Tot num";
+
+/* No comment provided by engineer. */
+"Try to search for another ID." = "Forsøk annet søk i ID";
+
+/* No comment provided by engineer. */
+"Try to search for other filter in Date or Result" = "Forsøk annet søk i Dato eller Resultat";
+
+/* No comment provided by engineer. */
+"Update task" = "Oppdater oppgave";
+
+/* No comment provided by engineer. */
+"Verified" = "Verifisert";
+
+/* No comment provided by engineer. */
+"Verify task" = "Verifiser oppgave";
+
+/* No comment provided by engineer. */
+"View logfile" = "Vis loggfil";
+
+/* No comment provided by engineer. */
+"View output" = "Se logg";
+
+/* No comment provided by engineer. */
+"Welcome to RsyncUI" = "Velkommen til RsyncUI";
+

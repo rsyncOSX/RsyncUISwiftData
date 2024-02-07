@@ -1,0 +1,441 @@
+/* (No Comment) */
+"Abort" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Abort (⌘K)" = "Abbrechen(⌘K)";
+
+/* No comment provided by engineer. */
+"Abort task" = "Aufgabe abbrechen";
+
+/* No comment provided by engineer. */
+"Add local as remote catalog - required" = "Lokal als RemoteCatalog hinzufügen - erforderlich";
+
+/* No comment provided by engineer. */
+"Add local catalog - required" = "Lokalkatalog hinzufügen - erforderlich";
+
+/* No comment provided by engineer. */
+"Add posttask" = "Posttask hinzufügen";
+
+/* No comment provided by engineer. */
+"Add pretask" = "Pretask hinzufügen";
+
+/* No comment provided by engineer. */
+"Add profile" = "Profil hinzufügen";
+
+/* No comment provided by engineer. */
+"Add remote as local catalog - required" = "Remote als localcatalog hinzufügen - erforderlich";
+
+/* No comment provided by engineer. */
+"Add remote catalog - required" = "Remotekatalog hinzufügen - erforderlich";
+
+/* No comment provided by engineer. */
+"Add remote server" = "Remote-Server hinzufügen";
+
+/* No comment provided by engineer. */
+"Add remote user" = "Remote-Benutzer hinzufügen";
+
+/* No comment provided by engineer. */
+"Add synchronize ID" = "Synchronisierungs-ID hinzufügen";
+
+/* No comment provided by engineer. */
+"Add task" = "Aufgabe hinzufügen";
+
+/* No comment provided by engineer. */
+"Add tasks" = "Aufgaben hinzufügen";
+
+/* No comment provided by engineer. */
+"Apple Silicon" = "Apple Silicon";
+
+/* No comment provided by engineer. */
+"Backup" = "Sichern";
+
+/* No comment provided by engineer. */
+"Backup configurations" = "Sichern datei";
+
+/* No comment provided by engineer. */
+"Bytes" = "Bytes";
+
+/* No comment provided by engineer. */
+"Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Catalog parameters" = "Katalogparameter";
+
+/* No comment provided by engineer. */
+"Catalogs" = "Katalog";
+
+/* No comment provided by engineer. */
+"Change search string to filter records" = "Ändern Sie die Suchzeichenfolge, um Datensätze zu filtern";
+
+/* No comment provided by engineer. */
+"Changed files: " = "Geänderte Dateien:";
+
+/* No comment provided by engineer. */
+"Check for error in output" = "Überprüfen Sie die Ausgabe auf Fehler";
+
+/* No comment provided by engineer. */
+"Confirm execute" = "Bestätigen Sie die Ausführung";
+
+/* No comment provided by engineer. */
+"Copy" = "Kopi";
+
+/* No comment provided by engineer. */
+"Copy configuration(s)" = "Konfiguration(en) kopieren";
+
+/* No comment provided by engineer. */
+"Copyright ©2023 Thomas Evensen" = "Copyright ©2023 Thomas Evensen";
+
+/* No comment provided by engineer. */
+"Create keys" = "Keys erstellen";
+
+/* No comment provided by engineer. */
+"Create profile" = "Profil erstellen";
+
+/* No comment provided by engineer. */
+"Date" = "Datum";
+
+/* No comment provided by engineer. */
+"Days" = "Tage";
+
+/* No comment provided by engineer. */
+"Default rsync parameters" = "Standard rsync Parameter";
+
+/* No comment provided by engineer. */
+"Delete" = "Löschen";
+
+/* No comment provided by engineer. */
+"Delete configuration(s)" = "Konfiguration(en) löschen";
+
+/* No comment provided by engineer. */
+"Delete files: " = "Datei löschen";
+
+/* No comment provided by engineer. */
+"Delete profile" = "Profil löschen";
+
+/* No comment provided by engineer. */
+"Delete snapshots(s)" = "Schnappschüsse löschen";
+
+/* No comment provided by engineer. */
+"deleted data. RsyncUI will NOT stop you from doing so. That is why it is very" = "gelöschte Daten. RsyncUI wird Sie NICHT davon abhalten. Deshalb ist es sehr";
+
+/* No comment provided by engineer. */
+"Deleting snapshots" = "Schnappschüsse löschen";
+
+/* No comment provided by engineer. */
+"Detailed log level" = "Detaillierte Protokollebene";
+
+/* No comment provided by engineer. */
+"Don´t add /" = "Nicht hinzufügen/";
+
+/* No comment provided by engineer. */
+"Download new version" = "Neue Version herunterladen";
+
+/* No comment provided by engineer. */
+"Enable" = "Aktivieren";
+
+/* No comment provided by engineer. */
+"Enable rsync daemon" = "Rsync daemon aktivieren";
+
+/* No comment provided by engineer. */
+"Environment" = "Umgebung";
+
+/* No comment provided by engineer. */
+"Environment variable" = "Umgebungsvariable";
+
+/* No comment provided by engineer. */
+"Estimate" = "Schätzung";
+
+/* No comment provided by engineer. */
+"Estimate (⌘E)" = "Schätzung (⌘E)";
+
+/* No comment provided by engineer. */
+"Filenames" = "Filnamen";
+
+/* No comment provided by engineer. */
+"Files" = "Dateien";
+
+/* No comment provided by engineer. */
+"First task" = "Erste Aufgabe";
+
+/* No comment provided by engineer. */
+"Full" = "Voll";
+
+/* No comment provided by engineer. */
+"German translation by: Andre Voigtmann" = "Deutsche Übersetzung von: Andre Voigtmann";
+
+/* No comment provided by engineer. */
+"Get list of files for restore" = "Rufen Sie eine Liste der wiederherzustellenden Dateien ab";
+
+/* No comment provided by engineer. */
+"Global ssh keypath and identityfile" = "Globale SSH-Tastatur und Identitätsdatei";
+
+/* No comment provided by engineer. */
+"Global ssh port" = "Globaler SSH-Port";
+
+/* No comment provided by engineer. */
+"Halt on error" = "Bei Fehler stoppen";
+
+/* No comment provided by engineer. */
+"Home catalogs" = "Hauskataloge";
+
+/* No comment provided by engineer. */
+"Icon by: Zsolt Sándor" = "Symbol von: Zsolt Sándor";
+
+/* No comment provided by engineer. */
+"Important" = "Wichtig";
+
+/* No comment provided by engineer. */
+"important to execute a simulated run and inspect what happens before a real run." = "wichtig, einen simulierten Lauf durchzuführen und zu überprüfen, was vor einem echten Lauf passiert.";
+
+/* No comment provided by engineer. */
+"Last" = "Letzte";
+
+/* No comment provided by engineer. */
+"List tasks all profiles" = "Aufgaben aller Profile auflisten";
+
+/* No comment provided by engineer. */
+"Local catalog" = "Lokaler Katalog";
+
+/* No comment provided by engineer. */
+"Local catalog: " = "Lokaler Katalog:";
+
+/* No comment provided by engineer. */
+"Local ssh keys are present" = "Lokale ssh schlüssel sind vorhanden";
+
+/* No comment provided by engineer. */
+"localhost" = "localhost";
+
+/* No comment provided by engineer. */
+"Log to file" = "Log in Datei";
+
+/* No comment provided by engineer. */
+"Logfile" = "Protokolldatei";
+
+/* No comment provided by engineer. */
+"Mark days :" = "Tage markieren:";
+
+/* No comment provided by engineer. */
+"Min" = "Min";
+
+/* No comment provided by engineer. */
+"Monitor network" = "Netzwerk überwachen";
+
+/* No comment provided by engineer. */
+"New" = "Neu";
+
+/* No comment provided by engineer. */
+"New files: " = "Neue datei:";
+
+/* No comment provided by engineer. */
+"New version" = "Neue Version";
+
+/* No comment provided by engineer. */
+"New version is available" = "Neue Version ist verfügbar";
+
+/* No comment provided by engineer. */
+"No error" = "Kein Fehler";
+
+/* No comment provided by engineer. */
+"None" = "Keine";
+
+/* No comment provided by engineer. */
+"Norwegian translation by: Thomas Evensen" = "Norwegische Übersetzung von: Thomas Evensen";
+
+/* No comment provided by engineer. */
+"Not a snapshot task" = "Keine Snapshot-Aufgabe";
+
+/* No comment provided by engineer. */
+"Not verified" = "Nicht verifiziert";
+
+/* No comment provided by engineer. */
+"Number of log records: " = "Anzahl der Protokolle:";
+
+/* No comment provided by engineer. */
+"Number of logrecords" = "Anzahl der Protokolle";
+
+/* No comment provided by engineer. */
+"OK" = "Ok";
+
+/* No comment provided by engineer. */
+"Changelog" = "Änderungsprotokoll";
+
+/* No comment provided by engineer. */
+"Other settings" = "Andere Einstellungen";
+
+/* No comment provided by engineer. */
+"Output" = "Ausgabe";
+
+/* No comment provided by engineer. */
+"Path for restore" = "Pfad zum Wiederherstellen";
+
+/* No comment provided by engineer. */
+"Please read and understand the information below. There is more info" = "Bitte lesen und verstehen Sie die nachstehenden Informationen. Es gibt mehr Informationen";
+
+/* No comment provided by engineer. */
+"Profile" = "Profil";
+
+/* No comment provided by engineer. */
+"Profiles" = "Profil";
+
+/* No comment provided by engineer. */
+"Remote catalog" = "Remote Katalog";
+
+/* No comment provided by engineer. */
+"Remote catalog: " = "Remote Katalog:";
+
+/* No comment provided by engineer. */
+"Remote parameters" = "Remote Parameter";
+
+/* No comment provided by engineer. */
+"Remote server" = "Entfernter Server ";
+
+/* No comment provided by engineer. */
+"Remote user" = "Entfernter Benutzer";
+
+/* No comment provided by engineer. */
+"Remove default rsync parameters" = "Entfernen Sie die Standard-rsync-Parameter";
+
+/* No comment provided by engineer. */
+"Reset estimates" = "Schätzungen zurücksetzen";
+
+/* No comment provided by engineer. */
+"Reset logfile" = "Logdatei zurücksetzen";
+
+/* No comment provided by engineer. */
+"Reset selections" = "Auswahl zurücksetzen";
+
+/* No comment provided by engineer. */
+"Restore files" = "Dateien wiederherstellen";
+
+/* No comment provided by engineer. */
+"Result" = "Result";
+
+/* No comment provided by engineer. */
+"Rsync output estimated task" = "Geschätzte Rsync-Ausgabeaufgabe";
+
+/* No comment provided by engineer. */
+"Rsync v3.x" = "Rsync v3.x";
+
+/* No comment provided by engineer. */
+"Rsync version and path" = "Rsync-Version und -Pfad";
+
+/* No comment provided by engineer. */
+"RsyncUI" = "RsyncUI";
+
+/* No comment provided by engineer. */
+"RsyncUI a GUI for rsync" = "RsyncUI eine GUI für rsync";
+
+/* No comment provided by engineer. */
+"RsyncUI help" = "RsyncUI Hilfe";
+
+/* No comment provided by engineer. */
+"Save settings" = "Einstellungen speichern";
+
+/* No comment provided by engineer. */
+"Save usersettings" = "Benutzereinstellungen speichern";
+
+/* No comment provided by engineer. */
+"Saved" = "Gespeichert";
+
+/* No comment provided by engineer. */
+"Select files to restore or \"./.\" for full restore" = "Dateien zum Wiederherstellen auswählen oder \"./\" für vollständige Wiederherstellung";
+
+/* No comment provided by engineer. */
+"Select task" = "Aufgabe auswählen";
+
+/* No comment provided by engineer. */
+"Selected logrecords for delete" = "Ausgewählte Protokolldatensätze zum Löschen";
+
+/* No comment provided by engineer. */
+"selecting Important. Setting the wrong parameters to rsync can result in" = "wählen Sie Wichtig aus. Das Einstellen der falschen Parameter für rsync kann dazu führen";
+
+/* No comment provided by engineer. */
+"Server" = "Server";
+
+/* No comment provided by engineer. */
+"Server: " = "Server:";
+
+/* No comment provided by engineer. */
+"Shell commands" = "Shell Befehle";
+
+/* No comment provided by engineer. */
+"Snap" = "Snap";
+
+/* No comment provided by engineer. */
+"Snapshots" = "Snapshots";
+
+/* No comment provided by engineer. */
+"Synchronize" = "Synchronisieren";
+
+/* No comment provided by engineer. */
+"Synchronize (⌘R)" = "Ausführen (⌘R)";
+
+/* No comment provided by engineer. */
+"Synchronize all tasks with NO estimating first?" = "Alle Aufgaben ohne vorherige Schätzung synchronisieren?";
+
+/* No comment provided by engineer. */
+"Synchronize ID" = "Synchronisierungs-ID";
+
+/* No comment provided by engineer. */
+"Synchronize ID: " = "Synchronisierungs-ID:";
+
+/* No comment provided by engineer. */
+"Synchronize tasks?" = "Aufgaben synchronisieren?";
+
+/* No comment provided by engineer. */
+"Tag" = "Tag";
+
+/* No comment provided by engineer. */
+"Tag snapshot" = "Tag snapshot";
+
+/* No comment provided by engineer. */
+"Task" = "Aufgabe";
+
+/* No comment provided by engineer. */
+"Task: " = "Aufgabe:";
+
+/* No comment provided by engineer. */
+"Tasks" = "Aufgaben";
+
+/* No comment provided by engineer. */
+"There are no logs by this filter" = "Für diesen Filter sind keine Protokolle vorhanden";
+
+/* No comment provided by engineer. */
+"There are no tasks by this Synchronize ID" = "Es gibt keine Aufgaben dieser Synchronisierungs-ID";
+
+/* No comment provided by engineer. */
+"There seems to be no data to synchronize" = "Es scheinen keine Daten zum Synchronisieren vorhanden zu sein";
+
+/* No comment provided by engineer. */
+"Tot bytes" = "Bytes Gesamt";
+
+/* No comment provided by engineer. */
+"Tot dir" = "Verzeichnisse Gesamt";
+
+/* No comment provided by engineer. */
+"Tot num" = "Anzahl Gesamt";
+
+/* No comment provided by engineer. */
+"Try to search for another ID." = "Versuchen Sie, nach einer anderen ID zu suchen.";
+
+/* No comment provided by engineer. */
+"Try to search for other filter in Date or Result" = "Versuchen Sie, in „Datum“ oder „Ergebnis“ nach einem anderen Filter zu suchen";
+
+/* No comment provided by engineer. */
+"Update task" = "Aufgabe aktualisieren";
+
+/* No comment provided by engineer. */
+"Verified" = "Verifiziert";
+
+/* No comment provided by engineer. */
+"Verify task" = "Aufgabe verifizieren";
+
+/* No comment provided by engineer. */
+"View logfile" = "Logdatei anzeigen";
+
+/* No comment provided by engineer. */
+"View output" = "Ausgabe anzeigen";
+
+/* No comment provided by engineer. */
+"Welcome to RsyncUI" = "Willkommen bei RsyncUI";
+
