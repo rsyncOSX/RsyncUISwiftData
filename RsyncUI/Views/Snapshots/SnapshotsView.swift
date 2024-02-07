@@ -11,6 +11,7 @@ import SwiftUI
 struct SnapshotsView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var configurations: [SynchronizeConfiguration]
+    @Query private var logrecords: [LogRecords]
 
     @State private var snapshotdata = SnapshotData()
     @State private var selectedconfig: SynchronizeConfiguration?
@@ -192,7 +193,6 @@ extension SnapshotsView {
         snapshotdata.snapshotuuidsfordelete.removeAll()
         guard SharedReference.shared.process == nil else { return }
         if let config = selectedconfig {
-            print(config.task)
             guard config.task == SharedReference.shared.snapshot else {
                 notsnapshot = true
                 // Show added for 1 second
@@ -214,13 +214,11 @@ extension SnapshotsView {
             }
             snapshotdata.snapshotlist = true
             // TODO: fix
-            /*
-
-             _ = Snapshotlogsandcatalogs(profile: rsyncUIdata.profile,
-                                         config: config,
-                                         configurations: rsyncUIdata,
-                                         snapshotdata: snapshotdata)
-              */
+            if let config = selectedconfig {
+                _ = Snapshotlogsandcatalogs(config: config,
+                                            logrecords: logrecords,
+                                            snapshotdata: snapshotdata)
+            }
         }
     }
 

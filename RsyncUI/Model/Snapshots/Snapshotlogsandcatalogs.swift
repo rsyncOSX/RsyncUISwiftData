@@ -90,16 +90,13 @@ final class Snapshotlogsandcatalogs: Snapshotcatalogs {
     }
 
     // TODO: fix
-    init(profile: String?,
-         config: SynchronizeConfiguration,
-         configurations: RsyncUIconfigurations?,
+    init(config: SynchronizeConfiguration,
+         logrecords: [LogRecords],
          snapshotdata: SnapshotData)
     {
         super.init(config: config, snapshotdata: snapshotdata)
         // Getting log records, sorted after date
-        logrecordssnapshot = SnapshotRecords(hiddenID: config.hiddenID,
-                                             profile: profile,
-                                             configurations: configurations).loggrecordssnapshots
+        logrecordssnapshot = SnapshotRecords(config: config, logrecords: logrecords).loggrecordssnapshots
     }
 
     override func processtermination(data: [String]?) {
