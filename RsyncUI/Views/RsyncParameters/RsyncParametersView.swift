@@ -81,10 +81,6 @@ struct RsyncParametersView: View {
                                 backup = false
                                 return
                             }
-                            guard selectedconfig?.parameter12 != "--backup" else {
-                                backup = true
-                                return
-                            }
                             parameters.setbackup()
                         }
 
