@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 21/11/2023.
 //
 
+import SwiftData
 import SwiftUI
 
 enum TypeofTaskQuictask: String, CaseIterable, Identifiable, CustomStringConvertible {
@@ -16,6 +17,9 @@ enum TypeofTaskQuictask: String, CaseIterable, Identifiable, CustomStringConvert
 }
 
 struct QuicktaskView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query private var configurations: [SynchronizeConfiguration]
+
     @State private var localcatalog: String = ""
     @State private var remotecatalog: String = ""
     @State private var selectedrsynccommand = TypeofTaskQuictask.synchronize
@@ -36,7 +40,7 @@ struct QuicktaskView: View {
     // Completed task
     @State private var completed: Bool = false
 
-    let userserver: UserServer
+    // let userserver: UserServer
     var choosecatalog = true
 
     enum QuicktaskField: Hashable {
@@ -140,9 +144,9 @@ struct QuicktaskView: View {
                 .font(Font.footnote)
             Picker("", selection: $remoteuser) {
                 Text("").tag("")
-                ForEach(userserver.remoteusers.sorted(by: <), id: \.self) { remoteuser in
-                    Text(remoteuser)
-                        .tag(remoteuser)
+                ForEach(getuniqueserversandlogins, id: \.self) { line in
+                    Text(line.offsiteUsername ?? "")
+                        .tag(line.offsiteUsername)
                 }
             }
             .frame(width: 93)
@@ -156,14 +160,30 @@ struct QuicktaskView: View {
                 .font(Font.footnote)
             Picker("", selection: $remoteserver) {
                 Text("").tag("")
-                ForEach(userserver.remoteservers.sorted(by: <), id: \.self) { remoteserver in
-                    Text(remoteserver)
-                        .tag(remoteserver)
+                ForEach(getuniqueserversandlogins, id: \.self) { line in
+                    Text(line.offsiteServer ?? "")
+                        .tag(line.offsiteServer)
                 }
             }
             .frame(width: 93)
             .accentColor(.blue)
         }
+    }
+
+    var getuniqueserversandlogins: [UniqueserversandLogins] {
+        guard configurations.count > 0 else { return [] }
+        var uniqueserversandlogins = [UniqueserversandLogins]()
+        for i in 0 ..< configurations.count {
+            if configurations[i].offsiteUsername.isEmpty == false, configurations[i].offsiteServer.isEmpty == false {
+                let record = UniqueserversandLogins(configurations[i].offsiteUsername, configurations[i].offsiteServer)
+                if uniqueserversandlogins.filter({ ($0.offsiteUsername == record.offsiteUsername) &&
+                        ($0.offsiteServer == record.offsiteServer)
+                }).count == 0 {
+                    uniqueserversandlogins.append(record)
+                }
+            }
+        }
+        return uniqueserversandlogins
     }
 
     var labelaborttask: some View {

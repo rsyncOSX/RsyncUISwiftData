@@ -169,6 +169,7 @@ struct TasksView: View {
     var profilepicker: some View {
         HStack {
             Picker("Filter", selection: $filterstring) {
+                Text("").tag("")
                 ForEach(profilenames.profiles, id: \.self) { profile in
                     Text(profile.profile)
                         .tag(profile.profile)

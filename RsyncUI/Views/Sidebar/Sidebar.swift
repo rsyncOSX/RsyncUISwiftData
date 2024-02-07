@@ -57,19 +57,15 @@ struct Sidebar: View {
         case .rsync_parameters:
             RsyncParametersView()
         case .restore:
-            Text("Restore")
-        /*
-         NavigationStack {
-             RestoreTableView(rsyncUIdata: rsyncUIdata)
-         }
-          */
+            NavigationStack {
+                RestoreTableView()
+            }
         case .snapshots:
             SnapshotsView()
         case .synchronize:
             SidebarTasksView(selecteduuids: $selecteduuids)
         case .quick_synchronize:
-            Text("Quick")
-            // QuicktaskView(userserver: UserServer(configurations: rsyncUIdata.configurations))
+            QuicktaskView()
         }
     }
 }

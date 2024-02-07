@@ -54,9 +54,6 @@ struct ShowSSHCopyKeysView: View {
     }
 
     var getuniqueserversandlogins: [UniqueserversandLogins]? {
-        let configs = configurations.filter {
-            SharedReference.shared.synctasks.contains($0.task)
-        }
         guard configurations.count > 0 else { return nil }
         var uniqueserversandlogins = [UniqueserversandLogins]()
         for i in 0 ..< configurations.count {
