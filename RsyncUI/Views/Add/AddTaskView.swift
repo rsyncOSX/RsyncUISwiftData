@@ -369,6 +369,9 @@ struct AddTaskView: View {
                             parameters.backupID = id
                         }
                     })
+                    .onChange(of: parameters.backupID) {
+                        parameters.configuration?.backupID = parameters.backupID
+                    }
             }
         }
     }
@@ -407,6 +410,9 @@ struct AddTaskView: View {
                             parameters.remoteuser = user
                         }
                     })
+                    .onChange(of: parameters.remoteuser) {
+                        parameters.configuration?.offsiteUsername = parameters.remoteuser
+                    }
             }
             // Remote server
             if parameters.configuration == nil { setremoteserver } else {
@@ -419,6 +425,9 @@ struct AddTaskView: View {
                             parameters.remoteserver = server
                         }
                     })
+                    .onChange(of: parameters.remoteserver) {
+                        parameters.configuration?.offsiteServer = parameters.remoteserver
+                    }
             }
         }
     }
