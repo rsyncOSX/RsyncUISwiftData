@@ -42,11 +42,8 @@ struct SnapshotsView: View {
             HStack {
                 ListofTasksLightView(selecteduuids: $selectedconfiguuid)
                     .onChange(of: selectedconfiguuid) {
-                        let selected = configurations.filter { config in
-                            selectedconfiguuid.contains(config.id)
-                        }
-                        if selected.count == 1 {
-                            selectedconfig = configurations[0]
+                        if let index = configurations.firstIndex(where: { $0.id == selectedconfiguuid.first }) {
+                            selectedconfig = configurations[index]
                             getdata()
                         } else {
                             selectedconfig = nil

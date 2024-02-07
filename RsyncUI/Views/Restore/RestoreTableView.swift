@@ -35,6 +35,10 @@ struct RestoreTableView: View {
                                 restore.filestorestore = ""
                                 restore.datalist = []
                                 if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
+                                    restore.selectedconfig = configurations[index]
+                                    if configurations[index].task == SharedReference.shared.snapshot {
+                                        getsnapshotlogsandcatalogs()
+                                    }
                                 } else {
                                     restore.selectedconfig = nil
                                     restore.filestorestore = ""
@@ -42,16 +46,6 @@ struct RestoreTableView: View {
                                     snapshotdata.catalogsanddates.removeAll()
                                     filterstring = ""
                                     restore.rsyncdata = nil
-                                }
-
-                                let selected = configurations.filter { config in
-                                    selecteduuids.contains(config.id)
-                                }
-                                if selected.count == 1 {
-                                    restore.selectedconfig = configurations[0]
-                                    if configurations[0].task == SharedReference.shared.snapshot {
-                                        getsnapshotlogsandcatalogs()
-                                    }
                                 }
                             }
 

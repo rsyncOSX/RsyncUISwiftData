@@ -70,11 +70,8 @@ struct TasksView: View {
             )
             .frame(maxWidth: .infinity)
             .onChange(of: selecteduuids) {
-                let selected = configurations.filter { config in
-                    selecteduuids.contains(config.id)
-                }
-                if selected.count == 1 {
-                    selectedconfig.config = selected[0]
+                if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
+                    selectedconfig.config = configurations[index]
                 } else {
                     selectedconfig.config = nil
                 }

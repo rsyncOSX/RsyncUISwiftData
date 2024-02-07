@@ -35,20 +35,14 @@ struct LogsbyConfigurationView: View {
                 ListofTasksLightView(selecteduuids: $selecteduuids)
                     .onChange(of: selecteduuids) {
                         if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
-                        } else {
-                            uuid = nil
-                        }
-
-                        let selected = configurations.filter { config in
-                            selecteduuids.contains(config.id)
-                        }
-                        if selected.count == 1 {
                             let selecteduuid = logrecords.filter { record in
-                                record.hiddenID == selected[0].hiddenID
+                                record.hiddenID == configurations[index].hiddenID
                             }
                             if selecteduuid.count == 1 {
                                 uuid = selecteduuid[0].id
                             }
+                        } else {
+                            uuid = nil
                         }
                     }
 
