@@ -11,7 +11,7 @@ import SwiftUI
 import UserNotifications
 
 @main
-struct RsyncGUIApp: App {
+struct RsyncUIApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([SynchronizeConfiguration.self,
                              UserConfiguration.self,
