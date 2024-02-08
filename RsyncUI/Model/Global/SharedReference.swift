@@ -132,10 +132,7 @@ class SharedReference {
     let usrlocalbinarm: String = "/opt/homebrew/bin"
     @ObservationIgnored var macosarm: Bool = false
     // RsyncUI config files and path
-    let configpath: String = "/.rsyncosx/"
     let logname: String = "rsyncui.txt"
-    // Userconfiguration json file
-    let userconfigjson: String = "rsyncuiconfig.json"
     // String tasks
     let synchronize: String = "synchronize"
     let snapshot: String = "snapshot"
@@ -149,13 +146,8 @@ class SharedReference {
     let logfilesize: Int = 100_000
     // Mac serialnumer
     @ObservationIgnored var macserialnumber: String?
-    // True if menuapp is running
-    // var menuappisrunning: Bool = false
     // Reference to the active process
     @ObservationIgnored var process: Process?
-    // JSON names
-    let filenamelogrecordsjson = "logrecords.json"
-    let fileconfigurationsjson = "configurations.json"
     // Object for propogate errors to views
     @ObservationIgnored var errorobject: AlertError?
     // Used when starting up RsyncUI

@@ -124,9 +124,9 @@ final class VerifyConfiguration: Connected {
 
     // Verify parameters for new config.
     func verify(_ data: AppendTask) -> SynchronizeConfiguration? {
-        var newconfig = SynchronizeConfiguration()
+        let newconfig = SynchronizeConfiguration()
         if data.newprofile.isEmpty {
-            newconfig.profile = "Default profile"
+            newconfig.profile = SharedReference.shared.defaultprofile
         } else {
             newconfig.profile = data.newprofile
         }

@@ -57,7 +57,7 @@ final class ObservableAddConfigurations {
     var remotestorageislocal: Bool = false
     var configuration: SynchronizeConfiguration?
     var localhome: String {
-        return NamesandPaths(.configurations).userHomeDirectoryPath ?? ""
+        return NamesandPaths().userHomeDirectoryPath ?? ""
     }
 
     var copyandpasteconfigurations: [SynchronizeConfiguration]?

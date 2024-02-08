@@ -36,7 +36,7 @@ final class EstimateProgressDetails {
         numberofconfigurations = num
     }
 
-    func executeanotherdryrun(_: String) -> Bool {
+    func executeanotherdryrun() -> Bool {
         return estimatealltasksasync == false &&
             onetaskisestimated == true &&
             estimatedlist?.count != numberofconfigurations

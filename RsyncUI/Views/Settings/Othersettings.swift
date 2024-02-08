@@ -40,7 +40,6 @@ struct Othersettings: View {
         .onChange(of: SharedReference.shared.settingsischanged) {
             guard SharedReference.shared.settingsischanged == true else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                // _ = WriteUserConfigurationJSON(UserConfiguration())
                 SharedReference.shared.settingsischanged = false
                 let userconfig = UserConfiguration()
                 if userconfiguration.count == 0 {

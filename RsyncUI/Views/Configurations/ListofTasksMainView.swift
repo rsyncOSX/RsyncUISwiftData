@@ -115,7 +115,7 @@ struct ListofTasksMainView: View {
                 confirmdelete = false
             }
         }
-        .contextMenu(forSelectionType: SynchronizeConfigurationJSON.ID.self) { _ in
+        .contextMenu(forSelectionType: SynchronizeConfiguration.ID.self) { _ in
             // ...
         } primaryAction: { _ in
             doubleclick = true

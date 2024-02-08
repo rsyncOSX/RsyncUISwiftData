@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 enum Rootpath {
-    case configurations
     case ssh
 }
 
@@ -25,8 +24,6 @@ class NamesandPaths {
     // create a new key require full path
     var identityfile: String?
     // configuration path, ViewControllerReference.shared.configpath
-    // let configpath: String = "/.rsyncosx/"
-    var configpath: String?
 
     // Documentscatalog
     var documentscatalog: String? {
@@ -80,13 +77,8 @@ class NamesandPaths {
         }
     }
 
-    init(_ path: Rootpath) {
-        configpath = SharedReference.shared.configpath
-        switch path {
-        case .configurations:
-            fullpathmacserial = (userHomeDirectoryPath ?? "") + (configpath ?? "") + (macserialnumber ?? "")
-            fullpathnomacserial = (userHomeDirectoryPath ?? "") + (configpath ?? "")
-        case .ssh:
+    init(_ path: Rootpath?) {
+        if let path = path {
             fullpathsshkeys = sshkeypath
             identityfile = sshkeypathandidentityfile
         }

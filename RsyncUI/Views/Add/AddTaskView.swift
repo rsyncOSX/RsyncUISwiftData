@@ -209,7 +209,7 @@ struct AddTaskView: View {
             HomeCatalogsView(catalog: $parameters.assistlocalcatalog,
                              path: $path,
                              homecatalogs: {
-                                 if let atpath = NamesandPaths(.configurations).userHomeDirectoryPath {
+                                 if let atpath = NamesandPaths().userHomeDirectoryPath {
                                      var catalogs = [Catalognames]()
                                      do {
                                          for folders in try Folder(path: atpath).subfolders {
@@ -261,7 +261,7 @@ struct AddTaskView: View {
     }
 
     var setProfile: some View {
-        EditValue(300, NSLocalizedString("Default profile", comment: ""),
+        EditValue(300, NSLocalizedString(SharedReference.shared.defaultprofile, comment: ""),
                   $parameters.profile)
             .focused($focusField, equals: .profile)
             .textContentType(.none)

@@ -9,7 +9,7 @@ import OSLog
 import SwiftUI
 
 struct SidebarTasksView: View {
-    @Binding var selecteduuids: Set<SynchronizeConfigurationJSON.ID>
+    @Binding var selecteduuids: Set<SynchronizeConfiguration.ID>
 
     @State private var executeprogressdetails = ExecuteProgressDetails()
     @State private var estimateprogressdetails = EstimateProgressDetails()

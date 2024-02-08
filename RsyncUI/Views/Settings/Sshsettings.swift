@@ -46,7 +46,6 @@ struct Sshsettings: View {
                 guard SharedReference.shared.settingsischanged == true,
                       usersettings.ready == true else { return }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    // _ = WriteUserConfigurationJSON(UserConfiguration())
                     SharedReference.shared.settingsischanged = false
                     let userconfig = UserConfiguration()
                     if userconfiguration.count == 0 {

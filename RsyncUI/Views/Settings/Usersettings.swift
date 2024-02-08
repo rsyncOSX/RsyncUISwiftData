@@ -133,22 +133,6 @@ struct Usersettings: View {
         .alert(isPresented: $usersettings.alerterror,
                content: { Alert(localizedError: usersettings.error)
                })
-        .toolbar {
-            ToolbarItem {
-                Button {
-                    _ = Backupconfigfiles()
-                } label: {
-                    Image(systemName: "wrench.adjustable.fill")
-                        .foregroundColor(Color(.blue))
-                        .imageScale(.large)
-                }
-                .help("Backup configurations")
-            }
-
-            ToolbarItem {
-                if SharedReference.shared.settingsischanged && usersettings.ready { thumbsupgreen }
-            }
-        }
         .onAppear(perform: {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 Logger.process.info("Usersettings is DEFAULT")
@@ -160,7 +144,6 @@ struct Usersettings: View {
             guard SharedReference.shared.settingsischanged == true,
                   usersettings.ready == true else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                // _ = WriteUserConfigurationJSON(UserConfiguration())
                 SharedReference.shared.settingsischanged = false
                 let userconfig = UserConfiguration()
                 if userconfiguration.count == 0 {

@@ -235,7 +235,7 @@ extension TasksView {
             doubleclick = false
             path.append(Tasks(task: .dryrunonetask))
         } else if selectedconfig.config != nil,
-                  estimateprogressdetails.executeanotherdryrun("Default profile") == true
+                  estimateprogressdetails.executeanotherdryrun() == true
         {
             Logger.process.info("DryRun: new task same profile selected, execute a dryrun")
             doubleclick = false
