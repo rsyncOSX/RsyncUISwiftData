@@ -133,7 +133,7 @@ extension ExecuteNoestimatedTasksView {
                     var inserted: Bool = addlogexisting(hiddenID,
                                                         resultannotaded ?? "",
                                                         date)
-                    // Record does not exist, create new Schedule (not inserted)
+                    // Record does not exist, create new LogRecord (not inserted)
                     if inserted == false {
                         inserted = addlognew(hiddenID, resultannotaded ?? "", date)
                     }
