@@ -39,8 +39,6 @@ final class ObservableAddConfigurations {
     var showAlertfordelete: Bool = false
 
     var assistlocalcatalog: String = ""
-    var assistremoteuser: String = ""
-    var assistremoteserver: String = ""
 
     // alert about error
     var error: Error = Validatedpath.noerror
@@ -183,6 +181,7 @@ final class ObservableAddConfigurations {
             remotecatalog = "/mounted_Volume/" + localcatalog
         }
         self.localcatalog = localhome + "/" + localcatalog
+        backupID = "Backup of: " + localcatalog
     }
 
     func assistfuncremoteuser(_ remoteuser: String) {

@@ -679,7 +679,10 @@
 		E985C6BF25F3AD9600CB895C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				E9C3045A2B72536F002F27F5 /* SwiftData */,
+				E985C70C25F3AD9700CB895C /* VerifyConfiguration.swift */,
+				E9C3045B2B7253B1002F27F5 /* SynchronizeConfiguration.swift */,
+				E9C3045D2B7253CD002F27F5 /* LogRecords.swift */,
+				E9C3045F2B7253E6002F27F5 /* UserConfiguration.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -770,7 +773,6 @@
 		E985C70725F3AD9700CB895C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				E985C70C25F3AD9700CB895C /* VerifyConfiguration.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -855,16 +857,6 @@
 				E9BB4F552903C00A00FEEA0A /* ExecuteTasksAsync.swift */,
 			);
 			path = Async;
-			sourceTree = "<group>";
-		};
-		E9C3045A2B72536F002F27F5 /* SwiftData */ = {
-			isa = PBXGroup;
-			children = (
-				E9C3045B2B7253B1002F27F5 /* SynchronizeConfiguration.swift */,
-				E9C3045D2B7253CD002F27F5 /* LogRecords.swift */,
-				E9C3045F2B7253E6002F27F5 /* UserConfiguration.swift */,
-			);
-			path = SwiftData;
 			sourceTree = "<group>";
 		};
 		E9CCECD52643AD3A007BE237 /* Newversion */ = {
