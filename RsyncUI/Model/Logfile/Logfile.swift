@@ -49,7 +49,7 @@ final class Logfile: NamesandPaths {
     }
 
     func writeloggfile() {
-        if let atpath = fullpathmacserial {
+        if let atpath = documentscatalog {
             do {
                 let folder = try Folder(path: atpath)
                 let file = try folder.createFile(named: SharedReference.shared.logname)
@@ -79,7 +79,7 @@ final class Logfile: NamesandPaths {
 
     //  typealias HandlerNSNumber = (Result<NSNumber, Error>) -> Void
     func filesize(then handler: @escaping HandlerNSNumber) {
-        if var atpath = fullpathmacserial {
+        if var atpath = documentscatalog {
             do {
                 // check if file exists befor reading, if not bail out
                 let fileexists = try Folder(path: atpath).containsFile(named: SharedReference.shared.logname)
@@ -102,7 +102,7 @@ final class Logfile: NamesandPaths {
     }
 
     func readloggfile() {
-        if var atpath = fullpathmacserial {
+        if var atpath = documentscatalog {
             do {
                 // check if file exists ahead of reading, if not bail out
                 guard try Folder(path: atpath).containsFile(named: SharedReference.shared.logname) else { return }
@@ -155,7 +155,7 @@ final class Logfile: NamesandPaths {
     }
 
     init(_ reset: Bool) {
-        super.init(.configurations)
+        super.init()
         if reset {
             // Reset loggfile
             let date = Date().localized_string_from_date()
@@ -169,7 +169,7 @@ final class Logfile: NamesandPaths {
     }
 
     init(_ data: [String]?, error: Bool) {
-        super.init(.configurations)
+        super.init()
         if error {
             if let data = data {
                 fulllogging(data)

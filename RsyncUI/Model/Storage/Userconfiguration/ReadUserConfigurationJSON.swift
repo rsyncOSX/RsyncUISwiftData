@@ -15,7 +15,7 @@ class ReadUserConfigurationJSON: NamesandPaths {
     var validhiddenIDs = Set<Int>()
 
     @discardableResult
-    init() {
+    override init() {
         super.init(.configurations)
         filenamedatastore.publisher
             .compactMap { filenamejson -> URL in

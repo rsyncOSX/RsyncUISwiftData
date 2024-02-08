@@ -91,6 +91,8 @@ class NamesandPaths {
             identityfile = sshkeypathandidentityfile
         }
     }
+
+    init() {}
 }
 
 extension NamesandPaths {
