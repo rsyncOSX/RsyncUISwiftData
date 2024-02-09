@@ -143,10 +143,9 @@ struct QuicktaskView: View {
             Text("Remote user")
                 .font(Font.footnote)
             Picker("", selection: $remoteuser) {
-                Text("").tag("")
-                ForEach(getuniqueserversandlogins, id: \.self) { line in
-                    Text(line.offsiteUsername ?? "")
-                        .tag(line.offsiteUsername)
+                ForEach(remoteusers, id: \.self) { user in
+                    Text(user)
+                        .tag(user)
                 }
             }
             .frame(width: 93)
@@ -159,10 +158,9 @@ struct QuicktaskView: View {
             Text("Remote server")
                 .font(Font.footnote)
             Picker("", selection: $remoteserver) {
-                Text("").tag("")
-                ForEach(getuniqueserversandlogins, id: \.self) { line in
-                    Text(line.offsiteServer ?? "")
-                        .tag(line.offsiteServer)
+                ForEach(remoteservers, id: \.self) { server in
+                    Text(server)
+                        .tag(server)
                 }
             }
             .frame(width: 93)
@@ -170,20 +168,30 @@ struct QuicktaskView: View {
         }
     }
 
-    var getuniqueserversandlogins: [UniqueserversandLogins] {
+    var remoteservers: [String] {
         guard configurations.count > 0 else { return [] }
-        var uniqueserversandlogins = [UniqueserversandLogins]()
+        var uniqueservers = [String]()
         for i in 0 ..< configurations.count {
-            if configurations[i].offsiteUsername.isEmpty == false, configurations[i].offsiteServer.isEmpty == false {
-                let record = UniqueserversandLogins(configurations[i].offsiteUsername, configurations[i].offsiteServer)
-                if uniqueserversandlogins.filter({ ($0.offsiteUsername == record.offsiteUsername) &&
-                        ($0.offsiteServer == record.offsiteServer)
-                }).count == 0 {
-                    uniqueserversandlogins.append(record)
+            if configurations[i].offsiteServer.isEmpty == false {
+                if uniqueservers.contains(configurations[i].offsiteServer) == false {
+                    uniqueservers.append(configurations[i].offsiteServer)
                 }
             }
         }
-        return uniqueserversandlogins
+        return uniqueservers
+    }
+
+    var remoteusers: [String] {
+        guard configurations.count > 0 else { return [] }
+        var uniqueusers = [String]()
+        for i in 0 ..< configurations.count {
+            if configurations[i].offsiteUsername.isEmpty == false {
+                if uniqueusers.contains(configurations[i].offsiteUsername) == false {
+                    uniqueusers.append(configurations[i].offsiteUsername)
+                }
+            }
+        }
+        return uniqueusers
     }
 
     var labelaborttask: some View {
