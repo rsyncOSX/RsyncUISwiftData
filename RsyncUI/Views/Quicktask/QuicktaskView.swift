@@ -322,12 +322,9 @@ extension QuicktaskView {
                                  nil,
                                  nil,
                                  nil)
-        // If newconfig is verified add it
         if let newconfig = VerifyConfiguration().verify(getdata) {
-            // Now can prepare for execute.
             Task {
-                // TODO: fix
-                // await execute(config: newconfig, dryrun: dryrun)
+                await execute(config: newconfig, dryrun: dryrun)
             }
         }
     }
@@ -335,7 +332,6 @@ extension QuicktaskView {
     func execute(config: SynchronizeConfiguration, dryrun: Bool) async {
         let arguments = ArgumentsSynchronize(config: config).argumentssynchronize(dryRun: dryrun, forDisplay: false)
         rsyncoutput = ObservableRsyncOutput()
-        // Start progressview
         showprogressview = true
         let process = await RsyncProcessAsync(arguments: arguments,
                                               config: config,
