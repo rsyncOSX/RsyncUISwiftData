@@ -4,7 +4,6 @@
 //
 //  Created by Thomas Evensen on 06/02/2024.
 //
-// swiftlint:disable line_length
 
 import Foundation
 import SwiftData
@@ -29,6 +28,20 @@ final class LogRecords: Identifiable {
         self.hiddenID = hiddenID
         dateStart = Date().en_us_string_from_date()
     }
+
+    // This init is used in JSON
+    init(_ data: DecodeLogRecords) {
+        dateStart = data.dateStart ?? ""
+        hiddenID = data.hiddenID ?? -1
+        offsiteserver = data.offsiteserver
+        for i in 0 ..< (data.records?.count ?? 0) {
+            if i == 0 { records = [Log]() }
+            let log = Log()
+            log.dateExecuted = data.records?[i].dateExecuted ?? ""
+            log.resultExecuted = data.records?[i].resultExecuted ?? ""
+            records?.append(log)
+        }
+    }
 }
 
 @Model
@@ -44,6 +57,11 @@ final class Log: Identifiable {
         self.dateExecuted = dateExecuted
         self.resultExecuted = resultExecuted
         self.logrecord = logrecord
+    }
+
+    init() {
+        dateExecuted = ""
+        resultExecuted = ""
     }
 }
 
