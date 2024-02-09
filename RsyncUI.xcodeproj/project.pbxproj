@@ -600,7 +600,6 @@
 				E985C71725F3AD9700CB895C /* AddParametersRsync */,
 				E985C6F525F3AD9700CB895C /* ComputeParametersRsync */,
 				E985C6FB25F3AD9700CB895C /* ProcessArguments */,
-				E985C70725F3AD9700CB895C /* Data */,
 				E985C71A25F3AD9700CB895C /* Global */,
 				E985C71E25F3AD9700CB895C /* Process */,
 			);
@@ -768,13 +767,6 @@
 				E985C70225F3AD9700CB895C /* SnapshotCreateCatalogArguments.swift */,
 			);
 			path = ProcessArguments;
-			sourceTree = "<group>";
-		};
-		E985C70725F3AD9700CB895C /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		E985C71725F3AD9700CB895C /* AddParametersRsync */ = {
