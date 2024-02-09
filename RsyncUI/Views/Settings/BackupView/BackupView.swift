@@ -14,6 +14,12 @@ struct BackupView: View {
     @Query private var logrecords: [LogRecords]
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Button("Config") { WriteConfigurationJSON(configurations) }
+                .buttonStyle(ColorfulButtonStyle())
+
+            Button("Logrecords") { WriteLogRecordsJSON(logrecords) }
+                .buttonStyle(ColorfulButtonStyle())
+        }
     }
 }

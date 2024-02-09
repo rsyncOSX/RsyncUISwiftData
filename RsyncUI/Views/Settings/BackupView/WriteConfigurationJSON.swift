@@ -33,7 +33,7 @@ class WriteConfigurationJSON: NamesandPaths {
     // We have to remove UUID and computed properties ahead of writing JSON file
     // done in the .map operator
     @discardableResult
-    init(_: String?, _ configurations: [SynchronizeConfiguration]?) {
+    init(_ configurations: [SynchronizeConfiguration]?) {
         super.init()
         configurations.publisher
             .map { configurations -> [DecodeConfiguration] in

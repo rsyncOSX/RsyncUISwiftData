@@ -49,7 +49,7 @@ struct SettingsView: View {
         case .environment:
             Othersettings()
         case .info:
-            AboutView()
+            BackupView()
         }
     }
 }
