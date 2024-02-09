@@ -9,7 +9,7 @@ import Observation
 import SwiftUI
 
 enum SideSettingsbaritems: String, Identifiable, CaseIterable {
-    case settings, ssh, environment, info
+    case settings, ssh, environment, info, backup
     var id: String { rawValue }
 }
 
@@ -49,7 +49,9 @@ struct SettingsView: View {
         case .environment:
             Othersettings()
         case .info:
-            AboutView()
+            Sshsettings()
+        case .backup:
+            BackupView()
         }
     }
 }
@@ -72,6 +74,8 @@ struct SidebarSettingsRow: View {
             return "gear"
         case .info:
             return "info.circle.fill"
+        case .backup:
+            return "wrench"
         }
     }
 }

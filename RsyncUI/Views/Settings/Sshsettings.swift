@@ -15,8 +15,6 @@ struct Sshsettings: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var userconfiguration: [UserConfiguration]
 
-    @Environment(AlertError.self) private var alerterror
-
     @State private var usersettings = ObservableSSH()
     @State private var localsshkeys: Bool = false
     @State private var showcopykeys: Bool = false

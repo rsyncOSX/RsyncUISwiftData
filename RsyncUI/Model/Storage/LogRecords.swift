@@ -4,7 +4,6 @@
 //
 //  Created by Thomas Evensen on 06/02/2024.
 //
-// swiftlint:disable line_length
 
 import Foundation
 import SwiftData
@@ -13,14 +12,12 @@ import SwiftData
 final class LogRecords: Identifiable {
     var id = UUID()
     @Attribute(.unique) var hiddenID: Int
-    var offsiteserver: String?
     var dateStart: String
     @Relationship(deleteRule: .cascade, inverse: \Log.logrecord) var records: [Log]?
 
-    init(id: UUID = UUID(), hiddenID: Int, offsiteserver: String? = nil, dateStart: String, records: [Log]? = nil) {
+    init(id: UUID = UUID(), hiddenID: Int, dateStart: String, records: [Log]? = nil) {
         self.id = id
         self.hiddenID = hiddenID
-        self.offsiteserver = offsiteserver
         self.dateStart = dateStart
         self.records = records
     }
@@ -28,6 +25,19 @@ final class LogRecords: Identifiable {
     init(_ hiddenID: Int) {
         self.hiddenID = hiddenID
         dateStart = Date().en_us_string_from_date()
+    }
+
+    // This init is used in JSON
+    init(_ data: DecodeLogRecords) {
+        dateStart = data.dateStart ?? ""
+        hiddenID = data.hiddenID ?? -1
+        for i in 0 ..< (data.records?.count ?? 0) {
+            if i == 0 { records = [Log]() }
+            let log = Log()
+            log.dateExecuted = data.records?[i].dateExecuted ?? ""
+            log.resultExecuted = data.records?[i].resultExecuted ?? ""
+            records?.append(log)
+        }
     }
 }
 
@@ -45,19 +55,22 @@ final class Log: Identifiable {
         self.resultExecuted = resultExecuted
         self.logrecord = logrecord
     }
+
+    init() {
+        dateExecuted = ""
+        resultExecuted = ""
+    }
 }
 
 extension LogRecords: Hashable, Equatable {
     static func == (lhs: LogRecords, rhs: LogRecords) -> Bool {
         return lhs.hiddenID == rhs.hiddenID &&
-            lhs.dateStart == rhs.dateStart &&
-            lhs.offsiteserver == rhs.offsiteserver
+            lhs.dateStart == rhs.dateStart
     }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(String(hiddenID))
         hasher.combine(dateStart)
-        hasher.combine(offsiteserver)
     }
 }
 
