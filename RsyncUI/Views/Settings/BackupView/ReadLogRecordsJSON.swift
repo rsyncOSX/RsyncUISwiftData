@@ -40,6 +40,7 @@ class ReadLogRecordsJSON: NamesandPaths {
                 logrecords = [LogRecords]()
                 for i in 0 ..< data.count {
                     let onerecords = LogRecords(data[i])
+                    // TODO: insert
                 }
                 Logger.process.info("ReadLogRecordsJSON: read logrecords from permanent storage")
                 subscriptons.removeAll()

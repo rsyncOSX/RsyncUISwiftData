@@ -11,7 +11,6 @@
 		E8944892267B2CB0009F9C4A /* RsyncUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8944891267B2CB0009F9C4A /* RsyncUIView.swift */; };
 		E913C0AD2ACBBC3000DB7B68 /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = E913C0AC2ACBBC3000DB7B68 /* ShellOut */; };
 		E9168C092615AB8500B139CE /* AddPreandPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9168C082615AB8500B139CE /* AddPreandPostView.swift */; };
-		E91ABDD92B7665B0003BC4EC /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91ABDD82B7665B0003BC4EC /* BackupView.swift */; };
 		E91ABDDE2B7666BA003BC4EC /* ReadConfigurationJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91ABDDA2B7666B9003BC4EC /* ReadConfigurationJSON.swift */; };
 		E91ABDDF2B7666BA003BC4EC /* WriteLogRecordsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91ABDDB2B7666B9003BC4EC /* WriteLogRecordsJSON.swift */; };
 		E91ABDE02B7666BA003BC4EC /* WriteConfigurationJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91ABDDC2B7666B9003BC4EC /* WriteConfigurationJSON.swift */; };
@@ -148,6 +147,7 @@
 		E9C3045C2B7253B1002F27F5 /* SynchronizeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3045B2B7253B1002F27F5 /* SynchronizeConfiguration.swift */; };
 		E9C3045E2B7253CD002F27F5 /* LogRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3045D2B7253CD002F27F5 /* LogRecords.swift */; };
 		E9C304602B7253E6002F27F5 /* UserConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3045F2B7253E6002F27F5 /* UserConfiguration.swift */; };
+		E9C594D52B76CBC400EB55C1 /* BackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C594D42B76CBC400EB55C1 /* BackupView.swift */; };
 		E9C9306725FEA1CF0049A76B /* ObservableSSH.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9306625FEA1CF0049A76B /* ObservableSSH.swift */; };
 		E9D1AFE62A2E49B600AD8125 /* ListofTasksLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D1AFE52A2E49B600AD8125 /* ListofTasksLightView.swift */; };
 		E9D317D02B3C09B9000B8FC9 /* HomeCatalogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D317CF2B3C09B9000B8FC9 /* HomeCatalogsView.swift */; };
@@ -182,7 +182,6 @@
 		E8902992260B0EF700F4F0DC /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		E8944891267B2CB0009F9C4A /* RsyncUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsyncUIView.swift; sourceTree = "<group>"; };
 		E9168C082615AB8500B139CE /* AddPreandPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPreandPostView.swift; sourceTree = "<group>"; };
-		E91ABDD82B7665B0003BC4EC /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
 		E91ABDDA2B7666B9003BC4EC /* ReadConfigurationJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadConfigurationJSON.swift; sourceTree = "<group>"; };
 		E91ABDDB2B7666B9003BC4EC /* WriteLogRecordsJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteLogRecordsJSON.swift; sourceTree = "<group>"; };
 		E91ABDDC2B7666B9003BC4EC /* WriteConfigurationJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteConfigurationJSON.swift; sourceTree = "<group>"; };
@@ -327,6 +326,7 @@
 		E9C3045B2B7253B1002F27F5 /* SynchronizeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizeConfiguration.swift; sourceTree = "<group>"; };
 		E9C3045D2B7253CD002F27F5 /* LogRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRecords.swift; sourceTree = "<group>"; };
 		E9C3045F2B7253E6002F27F5 /* UserConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfiguration.swift; sourceTree = "<group>"; };
+		E9C594D42B76CBC400EB55C1 /* BackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupView.swift; sourceTree = "<group>"; };
 		E9C9306625FEA1CF0049A76B /* ObservableSSH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableSSH.swift; sourceTree = "<group>"; };
 		E9D1AFE52A2E49B600AD8125 /* ListofTasksLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListofTasksLightView.swift; sourceTree = "<group>"; };
 		E9D317CF2B3C09B9000B8FC9 /* HomeCatalogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCatalogsView.swift; sourceTree = "<group>"; };
@@ -384,7 +384,7 @@
 				E91ABDDD2B7666BA003BC4EC /* ReadLogRecordsJSON.swift */,
 				E91ABDDC2B7666B9003BC4EC /* WriteConfigurationJSON.swift */,
 				E91ABDDB2B7666B9003BC4EC /* WriteLogRecordsJSON.swift */,
-				E91ABDD82B7665B0003BC4EC /* BackupView.swift */,
+				E9C594D42B76CBC400EB55C1 /* BackupView.swift */,
 			);
 			path = BackupView;
 			sourceTree = "<group>";
@@ -1104,7 +1104,6 @@
 				E92CB777264BF38F004FE022 /* ConfirmDeleteSnapshots.swift in Sources */,
 				E92FA43F2ABEBEC3001E0A14 /* AlertToast.swift in Sources */,
 				E985C74225F3AD9700CB895C /* Macserialnumber.swift in Sources */,
-				E91ABDD92B7665B0003BC4EC /* BackupView.swift in Sources */,
 				E985C74325F3AD9700CB895C /* Resources.swift in Sources */,
 				E956D3782B0C88B9008B190F /* RestoreTableView.swift in Sources */,
 				E9BD14BF2642FE6300E29347 /* TrimTwo.swift in Sources */,
@@ -1152,6 +1151,7 @@
 				E91ABDE52B7666DB003BC4EC /* DecodeConfiguration.swift in Sources */,
 				E94F23A22AFE967800983C1C /* DetailsOneTask.swift in Sources */,
 				E91ABDDF2B7666BA003BC4EC /* WriteLogRecordsJSON.swift in Sources */,
+				E9C594D52B76CBC400EB55C1 /* BackupView.swift in Sources */,
 				E9B6B3E32AFFDE7500E12EB2 /* ListofTasksMainView.swift in Sources */,
 				E8902993260B0EF700F4F0DC /* ButtonStyles.swift in Sources */,
 				E985C72A25F3AD9700CB895C /* NamesandPaths.swift in Sources */,

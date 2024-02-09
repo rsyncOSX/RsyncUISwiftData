@@ -39,6 +39,7 @@ class ReadConfigurationJSON: NamesandPaths {
                 let configurations = [SynchronizeConfiguration]()
                 for i in 0 ..< data.count {
                     let configuration = SynchronizeConfiguration(data[i])
+                    // TODO: insert
                 }
                 self.configurations = configurations
                 subscriptons.removeAll()

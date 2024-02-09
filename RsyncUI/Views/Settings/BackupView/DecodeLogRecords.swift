@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 18/10/2020.
 //  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
-//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
@@ -35,13 +34,11 @@ struct DecodeLogRecords: Codable {
     let dateStart: String?
     let hiddenID: Int?
     var records: [DecodeLog]?
-    let offsiteserver: String?
 
     enum CodingKeys: String, CodingKey {
         case dateStart
         case hiddenID
         case records
-        case offsiteserver
     }
 
     init(from decoder: Decoder) throws {
@@ -49,13 +46,11 @@ struct DecodeLogRecords: Codable {
         dateStart = try values.decodeIfPresent(String.self, forKey: .dateStart)
         hiddenID = try values.decodeIfPresent(Int.self, forKey: .hiddenID)
         records = try values.decodeIfPresent([DecodeLog].self, forKey: .records)
-        offsiteserver = try values.decodeIfPresent(String.self, forKey: .offsiteserver)
     }
 
     init(_ data: LogRecords) {
         dateStart = data.dateStart
         hiddenID = data.hiddenID
-        offsiteserver = data.offsiteserver
         for i in 0 ..< (data.records?.count ?? 0) {
             if i == 0 { records = [DecodeLog]() }
             let log = DecodeLog(data.records?[i].dateExecuted ?? "", data.records?[i].resultExecuted ?? "")

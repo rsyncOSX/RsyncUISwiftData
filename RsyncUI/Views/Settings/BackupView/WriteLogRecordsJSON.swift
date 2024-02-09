@@ -25,7 +25,7 @@ class WriteLogRecordsJSON: NamesandPaths {
                 }
             } catch let e {
                 let error = e
-                propogateerror(error: error)
+                Logger.process.warning("WriteLogRecordsJSON: error \(error, privacy: .public)")
             }
         }
     }
@@ -49,7 +49,7 @@ class WriteLogRecordsJSON: NamesandPaths {
                 case .finished:
                     return
                 case let .failure(error):
-                    self.propogateerror(error: error)
+                    Logger.process.warning("WriteLogRecordsJSON: error \(error, privacy: .public)")
                 }
             }, receiveValue: { [unowned self] result in
                 let jsonfile = String(data: result, encoding: .utf8)
