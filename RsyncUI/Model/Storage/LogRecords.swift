@@ -4,6 +4,7 @@
 //
 //  Created by Thomas Evensen on 06/02/2024.
 //
+// swiftlint:disable line_length
 
 import Foundation
 import SwiftData
@@ -55,11 +56,6 @@ final class Log: Identifiable {
         self.dateExecuted = dateExecuted
         self.resultExecuted = resultExecuted
         self.logrecord = logrecord
-    }
-
-    init() {
-        dateExecuted = ""
-        resultExecuted = ""
     }
 }
 
