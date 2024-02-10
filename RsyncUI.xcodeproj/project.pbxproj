@@ -622,7 +622,7 @@
 				E985C69A25F3AD9600CB895C /* Snapshots */,
 				E985C69F25F3AD9600CB895C /* Output */,
 				E985C6A225F3AD9600CB895C /* Utils */,
-				E985C6BF25F3AD9600CB895C /* Storage */,
+				E985C6BF25F3AD9600CB895C /* ModelData */,
 				E985C6DC25F3AD9600CB895C /* Ssh */,
 				E985C6DE25F3AD9600CB895C /* Execution */,
 				E985C6F325F3AD9700CB895C /* Logfile */,
@@ -704,7 +704,7 @@
 			path = yudpsocket;
 			sourceTree = "<group>";
 		};
-		E985C6BF25F3AD9600CB895C /* Storage */ = {
+		E985C6BF25F3AD9600CB895C /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
 				E985C70C25F3AD9700CB895C /* VerifyConfiguration.swift */,
@@ -712,7 +712,7 @@
 				E9C3045D2B7253CD002F27F5 /* LogRecords.swift */,
 				E9C3045F2B7253E6002F27F5 /* UserConfiguration.swift */,
 			);
-			path = Storage;
+			path = ModelData;
 			sourceTree = "<group>";
 		};
 		E985C6DC25F3AD9600CB895C /* Ssh */ = {

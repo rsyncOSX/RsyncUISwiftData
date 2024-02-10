@@ -4,7 +4,7 @@
 //
 //  Created by Thomas Evensen on 06/02/2024.
 //
-// swiftlint:disable line_length
+// swiftlint:disable line_length cyclomatic_complexity
 
 import Foundation
 import SwiftData
@@ -124,4 +124,4 @@ final class UserConfiguration {
     }
 }
 
-// swiftlint:enable line_length
+// swiftlint:enable line_length cyclomatic_complexity
