@@ -33,14 +33,14 @@ class ReadLogRecordsJSON: NamesandPaths {
                 case .finished:
                     return
                 case .failure:
-                    Logger.process.warning("ReadLogRecordsJSON: something is wrong, could not read logdata from permanent storage")
+                    Logger.process.warning("ReadLogRecordsJSON: could not read logdata from permanent storage")
                     return
                 }
             } receiveValue: { [unowned self] data in
                 logrecords = [LogRecords]()
                 for i in 0 ..< data.count {
-                    let onerecords = LogRecords(data[i])
-                    // TODO: insert
+                    let onerecord = LogRecords(data[i])
+                    logrecords?.append(onerecord)
                 }
                 Logger.process.info("ReadLogRecordsJSON: read logrecords from permanent storage")
                 subscriptons.removeAll()

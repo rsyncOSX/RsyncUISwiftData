@@ -33,15 +33,15 @@ class ReadConfigurationJSON: NamesandPaths {
                 case .finished:
                     return
                 case .failure:
+                    Logger.process.warning("ReadConfigurationJSON: could not read logdata from permanent storage")
                     return
                 }
             } receiveValue: { [unowned self] data in
-                let configurations = [SynchronizeConfiguration]()
+                configurations = [SynchronizeConfiguration]()
                 for i in 0 ..< data.count {
                     let configuration = SynchronizeConfiguration(data[i])
-                    // TODO: insert
+                    configurations?.append(configuration)
                 }
-                self.configurations = configurations
                 subscriptons.removeAll()
                 Logger.process.info("ReadConfigurationJSON: read configurations from permanent storage")
             }.store(in: &subscriptons)
