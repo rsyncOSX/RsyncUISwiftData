@@ -15,11 +15,19 @@ struct BackupView: View {
 
     var body: some View {
         HStack {
-            Button("Config") { WriteConfigurationJSON(configurations) }
-                .buttonStyle(ColorfulButtonStyle())
+            Button("Write data") {
+                WriteConfigurationJSON(configurations)
+                WriteLogRecordsJSON(logrecords)
+            }
+            .buttonStyle(ColorfulButtonStyle())
 
-            Button("Logrecords") { WriteLogRecordsJSON(logrecords) }
-                .buttonStyle(ColorfulButtonStyle())
+            Button("Read data") {
+                let importconfigurations = ReadConfigurationJSON()
+                let importlogrecords = ReadLogRecordsJSON()
+                print(importconfigurations.configurations?.count)
+                print(importlogrecords.logrecords?.count)
+            }
+            .buttonStyle(ColorfulButtonStyle())
         }
     }
 }

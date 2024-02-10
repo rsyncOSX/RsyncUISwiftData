@@ -39,8 +39,8 @@ class ReadLogRecordsJSON: NamesandPaths {
             } receiveValue: { [unowned self] data in
                 logrecords = [LogRecords]()
                 for i in 0 ..< data.count {
-                    let onerecord = LogRecords(data[i])
-                    logrecords?.append(onerecord)
+                    // let onerecord = LogRecords(data[i])
+                    // logrecords?.append(onerecord)
                 }
                 Logger.process.info("ReadLogRecordsJSON: read logrecords from permanent storage")
                 subscriptons.removeAll()

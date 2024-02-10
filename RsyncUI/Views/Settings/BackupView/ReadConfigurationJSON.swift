@@ -39,8 +39,8 @@ class ReadConfigurationJSON: NamesandPaths {
             } receiveValue: { [unowned self] data in
                 configurations = [SynchronizeConfiguration]()
                 for i in 0 ..< data.count {
-                    let configuration = SynchronizeConfiguration(data[i])
-                    configurations?.append(configuration)
+                    // let configuration = SynchronizeConfiguration(data[i])
+                    // configurations?.append(configuration)
                 }
                 subscriptons.removeAll()
                 Logger.process.info("ReadConfigurationJSON: read configurations from permanent storage")
