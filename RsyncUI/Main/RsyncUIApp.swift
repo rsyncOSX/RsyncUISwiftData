@@ -18,7 +18,7 @@ struct RsyncUIApp: App {
                              LogRecords.self,
                              Log.self])
 
-        let storeURL = URL.documentsDirectory.appending(path: "rsyncuijson.sqlite")
+        let storeURL = URL.documentsDirectory.appending(path: "rsyncui.sqlite")
         let configuration = ModelConfiguration(schema: schema, url: storeURL)
 
         do {
