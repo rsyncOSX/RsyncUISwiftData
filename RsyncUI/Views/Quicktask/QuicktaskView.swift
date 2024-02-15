@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 21/11/2023.
 //
 
-import SwiftData
 import SwiftUI
 
 enum TypeofTaskQuictask: String, CaseIterable, Identifiable, CustomStringConvertible {
@@ -17,9 +16,6 @@ enum TypeofTaskQuictask: String, CaseIterable, Identifiable, CustomStringConvert
 }
 
 struct QuicktaskView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var configurations: [SynchronizeConfiguration]
-
     @State private var localcatalog: String = ""
     @State private var remotecatalog: String = ""
     @State private var selectedrsynccommand = TypeofTaskQuictask.synchronize
@@ -40,7 +36,6 @@ struct QuicktaskView: View {
     // Completed task
     @State private var completed: Bool = false
 
-    // let userserver: UserServer
     var choosecatalog = true
 
     enum QuicktaskField: Hashable {
@@ -53,15 +48,15 @@ struct QuicktaskView: View {
     @FocusState private var focusField: QuicktaskField?
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Spacer()
+        ZStack {
+            Spacer()
 
-                // Column 1
-                VStack(alignment: .leading) {
+            // Column 1
+            VStack(alignment: .leading) {
+                HStack {
+                    pickerselecttypeoftask
+
                     VStack(alignment: .trailing) {
-                        pickerselecttypeoftask
-
                         Toggle("--dry-run", isOn: $dryrun)
                             .toggleStyle(.switch)
 
@@ -69,129 +64,67 @@ struct QuicktaskView: View {
                             .toggleStyle(.switch)
                     }
                     .padding()
+                }
 
-                    VStack(alignment: .leading) {
-                        if selectedrsynccommand == .synchronize {
-                            localandremotecatalog
-                        } else {
-                            localandremotecatalogsyncremote
-                        }
-
-                        remoteuserandserver
-
-                        HStack {
-                            remoteuserpicker
-
-                            remoteserverpicker
-                        }
+                VStack(alignment: .leading) {
+                    if selectedrsynccommand == .synchronize {
+                        localandremotecatalog
+                    } else {
+                        localandremotecatalogsyncremote
                     }
-                }
 
-                if showprogressview { AlertToast(displayMode: .alert, type: .loading) }
-                if focusaborttask { labelaborttask }
-                if focusstartexecution { labelstartexecution }
-            }
-            .onSubmit {
-                switch focusField {
-                case .localcatalogField:
-                    focusField = .remotecatalogField
-                case .remotecatalogField:
-                    focusField = .remoteuserField
-                case .remoteuserField:
-                    focusField = .remoteserverField
-                case .remoteserverField:
-                    focusField = nil
-                    dryrun = true
-                default:
-                    return
+                    remoteuserandserver
                 }
             }
-            .onAppear {
-                focusField = .localcatalogField
-            }
-            .focusedSceneValue(\.aborttask, $focusaborttask)
-            .focusedSceneValue(\.startexecution, $focusstartexecution)
-            .toolbar(content: {
-                ToolbarItem {
-                    Button {
-                        getconfigandexecute()
-                    } label: {
-                        Image(systemName: "arrowshape.turn.up.left.fill")
-                            .foregroundColor(Color(.blue))
-                    }
-                    .help("Synchronize (⌘R)")
-                }
 
-                ToolbarItem {
-                    Button {
-                        abort()
-                    } label: {
-                        Image(systemName: "stop.fill")
-                    }
-                    .help("Abort (⌘K)")
-                }
-            })
-            .padding()
-            .navigationDestination(isPresented: $completed) {
-                OutputRsyncView(output: rsyncoutput?.getoutput() ?? [])
+            if showprogressview { AlertToast(displayMode: .alert, type: .loading) }
+            if focusaborttask { labelaborttask }
+            if focusstartexecution { labelstartexecution }
+        }
+        .onSubmit {
+            switch focusField {
+            case .localcatalogField:
+                focusField = .remotecatalogField
+            case .remotecatalogField:
+                focusField = .remoteuserField
+            case .remoteuserField:
+                focusField = .remoteserverField
+            case .remoteserverField:
+                focusField = nil
+                dryrun = true
+            default:
+                return
             }
         }
-    }
-
-    var remoteuserpicker: some View {
-        VStack(alignment: .trailing) {
-            Text("Remote user")
-                .font(Font.footnote)
-            Picker("", selection: $remoteuser) {
-                ForEach(remoteusers, id: \.self) { user in
-                    Text(user)
-                        .tag(user)
-                }
-            }
-            .frame(width: 93)
-            .accentColor(.blue)
+        .onAppear {
+            focusField = .localcatalogField
         }
-    }
-
-    var remoteserverpicker: some View {
-        VStack(alignment: .trailing) {
-            Text("Remote server")
-                .font(Font.footnote)
-            Picker("", selection: $remoteserver) {
-                ForEach(remoteservers, id: \.self) { server in
-                    Text(server)
-                        .tag(server)
+        .focusedSceneValue(\.aborttask, $focusaborttask)
+        .focusedSceneValue(\.startexecution, $focusstartexecution)
+        .toolbar(content: {
+            ToolbarItem {
+                Button {
+                    getconfigandexecute()
+                } label: {
+                    Image(systemName: "arrowshape.turn.up.left.fill")
+                        .foregroundColor(Color(.blue))
                 }
+                .help("Synchronize (⌘R)")
             }
-            .frame(width: 93)
-            .accentColor(.blue)
-        }
-    }
 
-    var remoteservers: [String] {
-        guard configurations.count > 0 else { return [] }
-        var uniqueservers = [String]()
-        for i in 0 ..< configurations.count {
-            if configurations[i].offsiteServer.isEmpty == false {
-                if uniqueservers.contains(configurations[i].offsiteServer) == false {
-                    uniqueservers.append(configurations[i].offsiteServer)
+            ToolbarItem {
+                Button {
+                    abort()
+                } label: {
+                    Image(systemName: "stop.fill")
                 }
+                .help("Abort (⌘K)")
             }
+        })
+        .padding()
+        .navigationDestination(isPresented: $completed) {
+            OutputRsyncView(output: rsyncoutput?.getoutput() ?? [])
         }
-        return uniqueservers
-    }
-
-    var remoteusers: [String] {
-        guard configurations.count > 0 else { return [] }
-        var uniqueusers = [String]()
-        for i in 0 ..< configurations.count {
-            if configurations[i].offsiteUsername.isEmpty == false {
-                if uniqueusers.contains(configurations[i].offsiteUsername) == false {
-                    uniqueusers.append(configurations[i].offsiteUsername)
-                }
-            }
-        }
-        return uniqueusers
     }
 
     var labelaborttask: some View {
@@ -322,7 +255,9 @@ extension QuicktaskView {
                                  nil,
                                  nil,
                                  nil)
+        // If newconfig is verified add it
         if let newconfig = VerifyConfiguration().verify(getdata) {
+            // Now can prepare for execute.
             Task {
                 await execute(config: newconfig, dryrun: dryrun)
             }
@@ -332,6 +267,7 @@ extension QuicktaskView {
     func execute(config: SynchronizeConfiguration, dryrun: Bool) async {
         let arguments = ArgumentsSynchronize(config: config).argumentssynchronize(dryRun: dryrun, forDisplay: false)
         rsyncoutput = ObservableRsyncOutput()
+        // Start progressview
         showprogressview = true
         let process = await RsyncProcessAsync(arguments: arguments,
                                               config: config,
