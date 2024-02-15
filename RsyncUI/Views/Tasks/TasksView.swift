@@ -154,6 +154,15 @@ struct TasksView: View {
                 }
                 .help("View logfile")
             }
+
+            ToolbarItem {
+                Button {
+                    path.append(Tasks(task: .quick_synchronize))
+                } label: {
+                    Image(systemName: "hare")
+                }
+                .help("Quick synchronize")
+            }
         })
         .alert(isPresented: $showingAlert) {
             Alert(

@@ -70,6 +70,8 @@ struct SidebarTasksView: View {
             NavigationLogfileView()
         case .firsttime:
             FirstTimeView()
+        case .quick_synchronize:
+            QuicktaskView()
         }
     }
 }
@@ -77,7 +79,7 @@ struct SidebarTasksView: View {
 enum DestinationView: String, Identifiable {
     case executestimatedview, executenoestimatetasksview,
          estimatedview, firsttime, dryrunonetask,
-         dryrunonetaskalreadyestimated, viewlogfile
+         dryrunonetaskalreadyestimated, viewlogfile, quick_synchronize
     var id: String { rawValue }
 }
 
