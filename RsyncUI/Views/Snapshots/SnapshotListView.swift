@@ -62,9 +62,8 @@ struct SnapshotListView: View {
                 }
                 .width(max: 250)
             }
-            .confirmationDialog(
-                NSLocalizedString("Delete snapshots(s)", comment: "")
-                    + "?",
+            confirmationDialog(
+                Text("Delete ^[\(snapshotdata.snapshotuuidsfordelete.count) snapshot](inflect: true)"),
                 isPresented: $confirmdelete
             ) {
                 Button("Delete") {

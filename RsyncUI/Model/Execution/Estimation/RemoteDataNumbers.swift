@@ -14,12 +14,17 @@ struct RemoteDataNumbers: Identifiable, Hashable {
     var id: SynchronizeConfiguration.ID
     var hiddenID: Int
     var transferredNumber: String
+    var transferredNumber_Int: Int
     var transferredNumberSizebytes: String
+    var transferredNumberSizebytes_Int: Int
     var totalNumber: String
     var totalNumberSizebytes: String
+    var totalNumberSizebytes_Int: Int
     var totalDirs: String
     var newfiles: String
+    var newfiles_Int: Int
     var deletefiles: String
+    var deletefiles_Int: Int
     var totalNumber_totalDirs: String
     var config: SynchronizeConfiguration?
 
@@ -55,13 +60,18 @@ struct RemoteDataNumbers: Identifiable, Hashable {
         backupID = config?.backupID ?? "Synchronize ID"
         let number = Numbers(outputfromrsync ?? [])
         transferredNumber = NumberFormatter.localizedString(from: NSNumber(value: number.getTransferredNumbers(numbers: .transferredNumber)), number: NumberFormatter.Style.none)
+        transferredNumber_Int = number.getTransferredNumbers(numbers: .transferredNumber)
         transferredNumberSizebytes = NumberFormatter.localizedString(from: NSNumber(value: number.getTransferredNumbers(numbers: .transferredNumberSizebytes)), number: NumberFormatter.Style.decimal)
+        transferredNumberSizebytes_Int = number.getTransferredNumbers(numbers: .transferredNumberSizebytes)
         totalNumber = NumberFormatter.localizedString(from: NSNumber(value: number.getTransferredNumbers(numbers: .totalNumber)), number: NumberFormatter.Style.decimal)
         totalNumberSizebytes = NumberFormatter.localizedString(from: NSNumber(value: number.getTransferredNumbers(numbers: .totalNumberSizebytes)), number: NumberFormatter.Style.decimal)
+        totalNumberSizebytes_Int = number.getTransferredNumbers(numbers: .totalNumberSizebytes)
         totalDirs = NumberFormatter.localizedString(from: NSNumber(value: number.getTransferredNumbers(numbers: .totalDirs)), number: NumberFormatter.Style.decimal)
         totalNumber_totalDirs = NumberFormatter.localizedString(from: NSNumber(value: number.getTransferredNumbers(numbers: .totalNumber_totalDirs)), number: NumberFormatter.Style.decimal)
         newfiles = NumberFormatter.localizedString(from: NSNumber(value: number.getTransferredNumbers(numbers: .new)), number: NumberFormatter.Style.none)
+        newfiles_Int = number.getTransferredNumbers(numbers: .new)
         deletefiles = NumberFormatter.localizedString(from: NSNumber(value: number.getTransferredNumbers(numbers: .delete)), number: NumberFormatter.Style.none)
+        deletefiles_Int = number.getTransferredNumbers(numbers: .delete)
         id = config?.id ?? UUID()
         if Int(transferredNumber) ?? 0 > 0 || Int(deletefiles) ?? 0 > 0 {
             datatosynchronize = true

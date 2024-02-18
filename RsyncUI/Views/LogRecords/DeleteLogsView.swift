@@ -17,7 +17,8 @@ struct DeleteLogsView: View {
 
     var body: some View {
         VStack {
-            header
+            Text("Delete ^[\(selectedloguuids.count) log](inflect: true)")
+                .font(.title2)
 
             Spacer()
 
@@ -29,17 +30,6 @@ struct DeleteLogsView: View {
                     .buttonStyle(ColorfulButtonStyle())
             }
             .padding()
-        }
-        .padding()
-    }
-
-    var header: some View {
-        HStack {
-            let message = NSLocalizedString("Delete", comment: "")
-                + " \(selectedloguuids.count) "
-                + "log(s)?"
-            Text(message)
-                .font(.title2)
         }
         .padding()
     }
