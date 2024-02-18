@@ -57,16 +57,13 @@ struct LogsbyConfigurationView: View {
                 }
             }
             HStack {
-                Text("Number of log records: ")
-
                 if showindebounce {
                     indebounce
                 } else {
-                    Text("\(numberoflogs)")
+                    Text("Counting ^[\(numberoflogs) log](inflect: true)")
                 }
                 Spacer()
             }
-            .padding()
         }
         .onAppear {
             numberoflogs = records.count
