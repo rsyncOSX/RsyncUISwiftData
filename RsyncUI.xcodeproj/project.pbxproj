@@ -200,8 +200,6 @@
 		E96036032B288CB600438D8B /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		E96223942B0BDA7E00C40578 /* OutputRsyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputRsyncView.swift; sourceTree = "<group>"; };
 		E969669D2B49AEA90054E6C6 /* ExecuteAsyncNoEstimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteAsyncNoEstimation.swift; sourceTree = "<group>"; };
-		E96A165D272E735F00B95D3D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E96A165F272E737000B95D3D /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E96AA40C2A9923F40031B1C3 /* ListofTasksAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListofTasksAddView.swift; sourceTree = "<group>"; };
 		E9712FBB2602465D003842FD /* DeleteLogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLogsView.swift; sourceTree = "<group>"; };
 		E97F62F428DC845100DCF475 /* RsyncAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsyncAsync.swift; sourceTree = "<group>"; };
@@ -955,8 +953,6 @@
 			knownRegions = (
 				en,
 				Base,
-				nb,
-				de,
 			);
 			mainGroup = E985C5BA25F3AC0700CB895C;
 			packageReferences = (
@@ -1201,8 +1197,6 @@
 		E96A165C272E735F00B95D3D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E96A165D272E735F00B95D3D /* de */,
-				E96A165F272E737000B95D3D /* nb */,
 				E94F8337272E7ABA00D3924B /* en */,
 			);
 			name = Localizable.strings;
