@@ -11,8 +11,6 @@ struct AboutView: View {
     @State private var newversion = CheckfornewversionofRsyncUI()
 
     let iconbystring: String = NSLocalizedString("Icon by: Zsolt Sándor", comment: "")
-    let norwegianstring: String = NSLocalizedString("Norwegian translation by: Thomas Evensen", comment: "")
-    let germanstring: String = NSLocalizedString("German translation by: Andre Voigtmann", comment: "")
     let changelog: String = "https://rsyncui.netlify.app/post/changelog/"
 
     var appName: String {
@@ -44,8 +42,6 @@ struct AboutView: View {
                 .resizable()
                 .aspectRatio(1.0, contentMode: .fit)
                 .frame(width: 64, height: 64)
-
-            translations
 
             rsyncversionshortstring
 
@@ -87,16 +83,6 @@ struct AboutView: View {
             Text("RsyncUI configpath: " + configpath)
         }
         .font(.caption)
-        .padding(3)
-    }
-
-    var translations: some View {
-        VStack {
-            Text(germanstring)
-                .font(.caption)
-            Text(norwegianstring)
-                .font(.caption)
-        }
         .padding(3)
     }
 
