@@ -62,8 +62,10 @@ struct LogsbyConfigurationView: View {
                 } else {
                     Text("Counting ^[\(numberoflogs) log](inflect: true)")
                 }
+
                 Spacer()
             }
+            .padding()
         }
         .onAppear {
             numberoflogs = records.count
