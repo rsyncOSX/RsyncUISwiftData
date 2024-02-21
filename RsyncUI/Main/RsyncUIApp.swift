@@ -15,8 +15,7 @@ struct RsyncUIApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([SynchronizeConfiguration.self,
                              UserConfiguration.self,
-                             LogRecords.self,
-                             Log.self])
+                             LogRecords.self])
 
         let storeURL = URL.documentsDirectory.appending(path: "rsyncui.sqlite")
         let configuration = ModelConfiguration(schema: schema, url: storeURL)
