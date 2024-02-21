@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 enum Sidebaritems: String, Identifiable, CaseIterable {
-    case synchronize, tasks, rsync_parameters, log_listings, restore
+    case synchronize, tasks, rsync_parameters, log_listings, restore, snapshots
     var id: String { rawValue }
 }
 
@@ -60,6 +60,8 @@ struct Sidebar: View {
             }
         case .synchronize:
             SidebarTasksView(selecteduuids: $selecteduuids)
+        case .snapshots:
+            SnapshotsView()
         }
     }
 }
@@ -84,6 +86,8 @@ struct SidebarRow: View {
             return "arrowshape.turn.up.forward"
         case .synchronize:
             return "arrowshape.turn.up.backward"
+        case .snapshots:
+            return "text.badge.plus"
         }
     }
 }

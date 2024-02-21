@@ -39,7 +39,7 @@ struct SnapshotsView: View {
     @State private var filterstring: String = ""
 
     var body: some View {
-        ZStack {
+        VStack {
             HStack {
                 ListofTasksLightView(selecteduuids: $selectedconfiguuid)
                     .onChange(of: selectedconfiguuid) {
@@ -64,25 +64,24 @@ struct SnapshotsView: View {
                         }
                     }
             }
-
             if snapshotdata.snapshotlist { AlertToast(displayMode: .alert, type: .loading) }
             if notsnapshot == true { notasnapshottask }
             if snapshotdata.inprogressofdelete == true { progressdelete }
-        }
 
-        if focustagsnapshot == true { labeltagsnapshot }
-        if focusaborttask { labelaborttask }
+            if focustagsnapshot == true { labeltagsnapshot }
+            if focusaborttask { labelaborttask }
 
-        HStack {
-            VStack(alignment: .leading) {
-                pickersnaplast
+            HStack {
+                VStack(alignment: .leading) {
+                    pickersnaplast
 
-                pickersnapdayoffweek
+                    pickersnapdayoffweek
+                }
+
+                labelnumberoflogs
+
+                Spacer()
             }
-
-            labelnumberoflogs
-
-            Spacer()
         }
         .focusedSceneValue(\.tagsnapshot, $focustagsnapshot)
         .focusedSceneValue(\.aborttask, $focusaborttask)
