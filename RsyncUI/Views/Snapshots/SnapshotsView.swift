@@ -41,17 +41,23 @@ struct SnapshotsView: View {
     var body: some View {
         VStack {
             HStack {
-                ListofTasksLightView(selecteduuids: $selectedconfiguuid)
-                    .onChange(of: selectedconfiguuid) {
-                        if let index = configurations.firstIndex(where: { $0.id == selectedconfiguuid.first }) {
-                            selectedconfig = configurations[index]
-                            getdata()
-                        } else {
-                            selectedconfig = nil
-                            snapshotdata.setsnapshotdata(nil)
-                            filterstring = ""
+                ZStack {
+                    ListofTasksLightView(selecteduuids: $selectedconfiguuid)
+                        .onChange(of: selectedconfiguuid) {
+                            if let index = configurations.firstIndex(where: { $0.id == selectedconfiguuid.first }) {
+                                selectedconfig = configurations[index]
+                                getdata()
+                            } else {
+                                selectedconfig = nil
+                                snapshotdata.setsnapshotdata(nil)
+                                filterstring = ""
+                            }
                         }
-                    }
+
+                    if snapshotdata.snapshotlist { AlertToast(displayMode: .alert, type: .loading) }
+                    if notsnapshot == true { notasnapshottask }
+                    if snapshotdata.inprogressofdelete == true { progressdelete }
+                }
 
                 SnapshotListView(snapshotdata: $snapshotdata,
                                  snapshotrecords: $snapshotrecords,
@@ -64,9 +70,6 @@ struct SnapshotsView: View {
                         }
                     }
             }
-            if snapshotdata.snapshotlist { AlertToast(displayMode: .alert, type: .loading) }
-            if notsnapshot == true { notasnapshottask }
-            if snapshotdata.inprogressofdelete == true { progressdelete }
 
             if focustagsnapshot == true { labeltagsnapshot }
             if focusaborttask { labelaborttask }
