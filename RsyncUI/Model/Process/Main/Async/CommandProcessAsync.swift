@@ -9,7 +9,6 @@ import Combine
 import Foundation
 import OSLog
 
-@MainActor
 final class CommandProcessAsync {
     // Combine subscribers
     var subscriptons = Set<AnyCancellable>()
@@ -22,6 +21,7 @@ final class CommandProcessAsync {
     // Output
     var outputprocess: OutputfromProcess?
 
+    @MainActor
     func executeProcess() async {
         guard command != nil else { return }
         // Process
@@ -89,6 +89,7 @@ final class CommandProcessAsync {
 
     deinit {
         SharedReference.shared.process = nil
+        Logger.process.info("CommandProcessAsync: DEINIT")
     }
 }
 

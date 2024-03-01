@@ -9,7 +9,6 @@ import Combine
 import Foundation
 import OSLog
 
-@MainActor
 final class RsyncProcessAsync {
     // Combine subscribers
     var subscriptons = Set<AnyCancellable>()
@@ -45,6 +44,7 @@ final class RsyncProcessAsync {
         }
     }
 
+    @MainActor
     func executeProcess() async {
         // Must check valid rsync exists
         guard SharedReference.shared.norsync == false else { return }
@@ -120,6 +120,7 @@ final class RsyncProcessAsync {
         self.monitor?.stopMonitoring()
         self.monitor = nil
         SharedReference.shared.process = nil
+        Logger.process.info("RsyncProcessAsync: DEINIT")
     }
 }
 
