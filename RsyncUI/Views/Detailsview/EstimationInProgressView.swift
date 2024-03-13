@@ -52,10 +52,10 @@ struct EstimationInProgressView: View {
                 Task {
                     // Either is there some selceted tasks or if not
                     // the EstimateTasksAsync selects all tasks to be estimated.
-                    let estimate = EstimateTasksAsync(configurations: configurations,
-                                                      estimateprogressdetails: estimateprogressdetails,
-                                                      uuids: selecteduuids,
-                                                      filter: "")
+                    let estimate = EstimateTasks(configurations: configurations,
+                                                 estimateprogressdetails: estimateprogressdetails,
+                                                 uuids: selecteduuids,
+                                                 filter: "")
                     await estimate.startestimation()
                 }
             }

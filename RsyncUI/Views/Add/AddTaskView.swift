@@ -10,7 +10,7 @@ import SwiftData
 import SwiftUI
 
 enum AddTaskDestinationView: String, Identifiable {
-    case shelltaskview, homecatalogs
+    case homecatalogs
     var id: String { rawValue }
 }
 
@@ -187,15 +187,6 @@ struct AddTaskView: View {
                     }
                     .help("Home catalogs")
                 }
-
-                ToolbarItem {
-                    Button {
-                        path.append(AddTasks(task: .shelltaskview))
-                    } label: {
-                        Image(systemName: "fossil.shell.fill")
-                    }
-                    .help("Shell commands")
-                }
             }
         }
     }
@@ -203,8 +194,6 @@ struct AddTaskView: View {
     @ViewBuilder
     func makeView(view: AddTaskDestinationView) -> some View {
         switch view {
-        case .shelltaskview:
-            AddPreandPostView()
         case .homecatalogs:
             HomeCatalogsView(catalog: $parameters.assistlocalcatalog,
                              path: $path,

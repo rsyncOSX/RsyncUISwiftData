@@ -1,5 +1,5 @@
 //
-//  ExecuteTasksAsync.swift
+//  ExecuteTasksNOEstimation.swift
 //  RsyncUI
 //
 //  Created by Thomas Evensen on 22/10/2022.
@@ -8,7 +8,7 @@
 import Foundation
 import OSLog
 
-final class ExecuteTasksAsync {
+final class ExecuteTasksNOEstimation {
     var localconfigurations: [SynchronizeConfiguration]
     var stackoftasktobeestimated: [Int]?
     weak var localexecuteasyncnoestimation: ExecuteAsyncNoEstimation?
@@ -77,7 +77,7 @@ final class ExecuteTasksAsync {
     }
 }
 
-extension ExecuteTasksAsync {
+extension ExecuteTasksNOEstimation {
     func processterminationexecute(outputfromrsync: [String]?, hiddenID: Int?) {
         // Log records
         // If snahost task the snapshotnum is increased when updating the configuration.
