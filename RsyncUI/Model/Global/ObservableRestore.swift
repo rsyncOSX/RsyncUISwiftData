@@ -32,7 +32,7 @@ final class ObservableRestore {
         return GetfullpathforRsync().rsyncpath ?? ""
     }
 
-    func processtermination(data: [String]?) {
+    func processtermination(data: [String]?, hiddenID _: Int?) {
         rsyncdata = data
         restorefilesinprogress = false
         presentsheetrsync = true
@@ -67,8 +67,7 @@ final class ObservableRestore {
         return true
     }
 
-    @MainActor
-    func restore() async {
+    func executerestore() {
         var arguments: [String]?
         do {
             let ok = try validateforrestore()
@@ -76,9 +75,9 @@ final class ObservableRestore {
                 arguments = computerestorearguments(forDisplay: false)
                 if let arguments = arguments {
                     restorefilesinprogress = true
-                    let command = RsyncAsync(arguments: arguments,
-                                             processtermination: processtermination)
-                    await command.executeProcess()
+                    let command = RsyncProcessNOFilehandler(arguments: arguments,
+                                                            processtermination: processtermination)
+                    command.executeProcess()
                 }
             }
         } catch let e {

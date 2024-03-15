@@ -54,7 +54,7 @@ struct SnapshotsView: View {
                             }
                         }
 
-                    if snapshotdata.snapshotlist { AlertToast(displayMode: .alert, type: .loading) }
+                    if snapshotdata.snapshotlist { ProgressView() }
                     if notsnapshot == true { notasnapshottask }
                     if snapshotdata.inprogressofdelete == true { progressdelete }
                 }

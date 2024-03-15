@@ -19,8 +19,7 @@ class EstimateTasks {
         return nil
     }
 
-    @MainActor
-    func startestimation() async {
+    func startestimation() {
         guard stackoftasktobeestimated?.count ?? 0 > 0 else {
             localestimateprogressdetails?.asyncestimationcomplete()
             return
@@ -31,10 +30,10 @@ class EstimateTasks {
                 guard arguments.count > 0 else { return }
                 // Used to display details of configuration in estimation
                 localestimateprogressdetails?.configurationtobestimated = config.id
-                let process = RsyncProcessAsync(arguments: arguments,
-                                                config: config,
-                                                processtermination: processtermination)
-                await process.executeProcess()
+                let process = RsyncProcessNOFilehandler(arguments: arguments,
+                                                        config: config,
+                                                        processtermination: processtermination)
+                process.executeProcess()
             }
         }
     }
@@ -74,8 +73,6 @@ extension EstimateTasks {
                 localestimateprogressdetails?.appenduuid(config.id)
             }
         }
-        Task {
-            await self.startestimation()
-        }
+        startestimation()
     }
 }

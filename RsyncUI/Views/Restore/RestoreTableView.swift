@@ -60,8 +60,8 @@ struct RestoreTableView: View {
                             }
                     }
 
-                    if gettingfilelist { AlertToast(displayMode: .alert, type: .loading) }
-                    if restore.restorefilesinprogress { AlertToast(displayMode: .alert, type: .loading) }
+                    if gettingfilelist { ProgressView() }
+                    if restore.restorefilesinprogress { ProgressView() }
                 }
 
                 Spacer()
@@ -110,6 +110,16 @@ struct RestoreTableView: View {
             }
             .toolbar(content: {
                 ToolbarItem {
+                    Button {
+                        executerestore()
+                    } label: {
+                        Image(systemName: "return")
+                            .foregroundColor(Color(.blue))
+                    }
+                    .help("Restore files")
+                }
+
+                ToolbarItem {
                     if restore.selectedconfig?.task == SharedReference.shared.snapshot {
                         snapshotcatalogpicker
                     }
@@ -117,21 +127,7 @@ struct RestoreTableView: View {
 
                 ToolbarItem {
                     Button {
-                        Task {
-                            await restore()
-                        }
-                    } label: {
-                        Image(systemName: "arrowshape.turn.up.left.fill")
-                            .foregroundColor(Color(.blue))
-                    }
-                    .help("Restore files")
-                }
-
-                ToolbarItem {
-                    Button {
-                        Task {
-                            await getlistoffilesforrestore()
-                        }
+                        getlistoffilesforrestore()
                     } label: {
                         Image(systemName: "square.and.arrow.down.fill")
                     }
@@ -221,11 +217,11 @@ struct RestoreTableView: View {
 }
 
 extension RestoreTableView {
-    func getlistoffilesforrestore() async {
+    func getlistoffilesforrestore() {
         if let config = restore.selectedconfig {
             guard config.task != SharedReference.shared.syncremote else { return }
             gettingfilelist = true
-            await getfilelist()
+            getfilelist()
         }
     }
 
@@ -233,7 +229,7 @@ extension RestoreTableView {
         _ = InterruptProcess()
     }
 
-    func processtermination(data: [String]?) {
+    func processtermination(data: [String]?, hiddenID _: Int?) {
         gettingfilelist = false
         restore.rsyncdata = TrimOne(data ?? []).trimmeddata.filter { filterstring.isEmpty ? true : $0.contains(filterstring) }
         restore.datalist = restore.rsyncdata?.map { filename in
@@ -241,8 +237,7 @@ extension RestoreTableView {
         } ?? []
     }
 
-    @MainActor
-    func getfilelist() async {
+    func getfilelist() {
         if let config = restore.selectedconfig {
             var arguments: [String]?
             let snapshot: Bool = (config.snapshotnum != nil) ? true : false
@@ -270,14 +265,13 @@ extension RestoreTableView {
                                                   snapshot: snapshot).getArguments()
             }
             guard arguments?.isEmpty == false else { return }
-            let command = RsyncAsync(arguments: arguments,
-                                     processtermination: processtermination)
-            await command.executeProcess()
+            let command = RsyncProcessNOFilehandler(arguments: arguments,
+                                                    processtermination: processtermination)
+            command.executeProcess()
         }
     }
 
-    @MainActor
-    func restore() async {
+    func executerestore() {
         if let config = restore.selectedconfig {
             let snapshot: Bool = (config.snapshotnum != nil) ? true : false
             if snapshot, snapshotcatalog.isEmpty == false {
@@ -289,9 +283,9 @@ extension RestoreTableView {
                     tempconfig.snapshotnum = snapshotnum + 1
                 }
                 restore.selectedconfig = tempconfig
-                await restore.restore()
+                restore.executerestore()
             } else {
-                await restore.restore()
+                restore.executerestore()
             }
         }
     }
@@ -320,3 +314,5 @@ struct RestoreFileRecord: Identifiable {
     let id = UUID()
     var filename: String
 }
+
+// swiftlint:enable line_length

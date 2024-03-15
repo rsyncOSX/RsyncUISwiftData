@@ -110,7 +110,7 @@ struct RsyncParametersView: View {
                 RsyncCommandView(config: $parameters.configuration,
                                  selectedrsynccommand: $selectedrsynccommand)
 
-                if showprogressview { AlertToast(displayMode: .alert, type: .loading) }
+                if showprogressview { ProgressView() }
             }
         }
         .focusedSceneValue(\.aborttask, $focusaborttask)
@@ -121,9 +121,7 @@ struct RsyncParametersView: View {
             ToolbarItem {
                 Button {
                     if let configuration = parameters.updatersyncparameters() {
-                        Task {
-                            await verify(config: configuration)
-                        }
+                        verify(config: configuration)
                     }
                 } label: {
                     Image(systemName: "flag.checkered")
@@ -167,22 +165,22 @@ struct RsyncParametersView: View {
 }
 
 extension RsyncParametersView {
-    func verify(config: SynchronizeConfiguration) async {
+    func verify(config: SynchronizeConfiguration) {
         var arguments: [String]?
         switch selectedrsynccommand {
         case .synchronize:
             arguments = ArgumentsSynchronize(config: config).argumentssynchronize(dryRun: true, forDisplay: false)
-        case .verify:
-            arguments = ArgumentsVerify(config: config).argumentsverify(forDisplay: false)
         case .restore:
             arguments = ArgumentsRestore(config: config, restoresnapshotbyfiles: false).argumentsrestore(dryRun: true, forDisplay: false, tmprestore: true)
+        case .verify:
+            arguments = ArgumentsVerify(config: config).argumentsverify(forDisplay: false)
         }
         rsyncoutput = ObservableRsyncOutput()
         showprogressview = true
-        let process = await RsyncProcessAsync(arguments: arguments,
-                                              config: config,
-                                              processtermination: processtermination)
-        await process.executeProcess()
+        let process = RsyncProcessNOFilehandler(arguments: arguments,
+                                                config: config,
+                                                processtermination: processtermination)
+        process.executeProcess()
     }
 
     func processtermination(outputfromrsync: [String]?, hiddenID _: Int?) {

@@ -56,11 +56,9 @@ struct DetailsOneTaskEstimatingView: View {
             let arguments = ArgumentsSynchronize(config: selectedconfig)
                 .argumentssynchronize(dryRun: true, forDisplay: false)
             guard arguments != nil else { return }
-            let task = RsyncAsync(arguments: arguments,
-                                  processtermination: processtermination)
-            Task {
-                await task.executeProcess()
-            }
+            let task = RsyncProcessNOFilehandler(arguments: arguments,
+                                                 processtermination: processtermination)
+            task.executeProcess()
         })
     }
 
@@ -77,7 +75,7 @@ struct DetailsOneTaskEstimatingView: View {
 }
 
 extension DetailsOneTaskEstimatingView {
-    func processtermination(data: [String]?) {
+    func processtermination(data: [String]?, hiddenID: Int?) {
         var selectedconfig: SynchronizeConfiguration?
         let selected = configurations.filter { config in
             selecteduuids.contains(config.id)

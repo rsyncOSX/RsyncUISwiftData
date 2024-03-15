@@ -27,8 +27,7 @@ final class ExecuteTasksNOEstimation {
         return nil
     }
 
-    @MainActor
-    func startexecution() async {
+    func startexecution() {
         guard stackoftasktobeestimated?.count ?? 0 > 0 else {
             // Update time stamps configurations and logrecords
             localupdatedates(configrecords)
@@ -41,10 +40,10 @@ final class ExecuteTasksNOEstimation {
             if let config = getconfig(localhiddenID, localconfigurations) {
                 let arguments = Argumentsforrsync().argumentsforrsync(config: config, argtype: .arg)
                 guard arguments.count > 0 else { return }
-                let process = RsyncProcessAsync(arguments: arguments,
-                                                config: config,
-                                                processtermination: processterminationexecute)
-                await process.executeProcess()
+                let process = RsyncProcessNOFilehandler(arguments: arguments,
+                                                        config: config,
+                                                        processtermination: processterminationexecute)
+                process.executeProcess()
             }
         }
     }
@@ -93,8 +92,6 @@ extension ExecuteTasksNOEstimation {
             localexecuteasyncnoestimation?.appendrecordexecutedlist(record)
             localexecuteasyncnoestimation?.appenduuid(config.id)
         }
-        Task {
-            await self.startexecution()
-        }
+        startexecution()
     }
 }

@@ -14,7 +14,7 @@ final class EstimateProgressDetails {
     // set uuid if data to be transferred
     var uuids = Set<UUID>()
     // Estimate async
-    var estimatealltasksasync: Bool = false
+    var estimatealltasks: Bool = false
     // Estimate on task, same profile
     // If one task in profile is estimated, this is set true
     // Used to decide if new profile is selected.
@@ -37,13 +37,13 @@ final class EstimateProgressDetails {
     }
 
     func executeanotherdryrun() -> Bool {
-        return estimatealltasksasync == false &&
+        return estimatealltasks == false &&
             onetaskisestimated == true &&
             estimatedlist?.count != numberofconfigurations
     }
 
     func alltasksestimated() -> Bool {
-        return estimatealltasksasync == false &&
+        return estimatealltasks == false &&
             estimatedlist?.count == numberofconfigurations
     }
 
@@ -60,7 +60,7 @@ final class EstimateProgressDetails {
         uuids.removeAll()
         estimatedlist = nil
         onetaskisestimated = false
-        estimatealltasksasync = false
+        estimatealltasks = false
         numberofconfigurations = 0
         numberofconfigurationsestimated = 0
         configurationtobestimated = nil
@@ -80,7 +80,7 @@ final class EstimateProgressDetails {
     }
 
     func asyncestimationcomplete() {
-        estimatealltasksasync = false
+        estimatealltasks = false
     }
 
     func getestimatedlist() -> [RemoteDataNumbers]? {

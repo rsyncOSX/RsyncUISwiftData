@@ -99,7 +99,7 @@ final class Snapshotlogsandcatalogs: Snapshotcatalogs {
         logrecordssnapshot = SnapshotRecords(config: config, logrecords: logrecords).loggrecordssnapshots
     }
 
-    override func processtermination(data: [String]?) {
+    override func processtermination(data: [String]?, hiddenID _: Int?) {
         prepareremotesnapshotcatalogs(data: data)
         calculateddayssincesynchronize()
         mergeremotecatalogsandlogs()

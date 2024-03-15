@@ -21,7 +21,7 @@ struct ExecuteNoestimatedTasksView: View {
     @State private var executeasyncnoestimation = ExecuteAsyncNoEstimation()
     @State private var filterstring: String = ""
     @State private var progressviewshowinfo: Bool = true
-    @State private var executealltasksasync: ExecuteTasksNOEstimation?
+    @State private var executetasks: ExecuteTasksNOEstimation?
     @State private var confirmdelete = false
     @State private var focusaborttask: Bool = false
 
@@ -31,13 +31,11 @@ struct ExecuteNoestimatedTasksView: View {
                             filterstring: $filterstring)
 
             if executeasyncnoestimation.executeasyncnoestimationcompleted == true { labelcompleted }
-            if progressviewshowinfo { AlertToast(displayMode: .alert, type: .loading) }
+            if progressviewshowinfo { ProgressView() }
             if focusaborttask { labelaborttask }
         }
         .onAppear(perform: {
-            Task {
-                await executeallnoestimationtasks()
-            }
+            executeallnoestimationtasks()
         })
         .focusedSceneValue(\.aborttask, $focusaborttask)
         .toolbar(content: {
@@ -83,17 +81,17 @@ extension ExecuteNoestimatedTasksView {
         executeasyncnoestimation.reset()
     }
 
-    func executeallnoestimationtasks() async {
+    func executeallnoestimationtasks() {
         Logger.process.info("ExecuteallNOtestimatedtasks() : \(selecteduuids, privacy: .public)")
         executeasyncnoestimation.startasyncexecutealltasksnoestimation()
-        executealltasksasync =
+        executetasks =
             ExecuteTasksNOEstimation(configurations: configurations,
                                      executeasyncnoestimation: executeasyncnoestimation,
                                      uuids: selecteduuids,
                                      filter: filterstring,
                                      updatedates: updatedates,
                                      updatelogrecords: updatelogrecords)
-        await executealltasksasync?.startexecution()
+        executetasks?.startexecution()
     }
 
     func updatedates(_ configrecords: [Typelogdata]) {

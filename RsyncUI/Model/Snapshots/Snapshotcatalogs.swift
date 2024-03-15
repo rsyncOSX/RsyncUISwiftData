@@ -11,17 +11,16 @@ class Snapshotcatalogs {
     var mysnapshotdata: SnapshotData?
     var catalogsanddates: [Catalogsanddates]?
 
-    @MainActor
-    func getremotecataloginfo(_ config: SynchronizeConfiguration) async {
+    func getremotecataloginfo(_ config: SynchronizeConfiguration) {
         let arguments = RestorefilesArguments(task: .snapshotcatalogsonly,
                                               config: config,
                                               remoteFile: nil,
                                               localCatalog: nil,
                                               drynrun: nil,
                                               snapshot: true)
-        let command = RsyncAsync(arguments: arguments.getArguments(),
-                                 processtermination: processtermination)
-        await command.executeProcess()
+        let command = RsyncProcessNOFilehandler(arguments: arguments.getArguments(),
+                                                processtermination: processtermination)
+        command.executeProcess()
     }
 
     // Getting, from process, remote snapshotcatalogs
@@ -54,12 +53,10 @@ class Snapshotcatalogs {
     {
         guard config.task == SharedReference.shared.snapshot else { return }
         mysnapshotdata = snapshotdata
-        Task {
-            await getremotecataloginfo(config)
-        }
+        getremotecataloginfo(config)
     }
 
-    func processtermination(data: [String]?) {
+    func processtermination(data: [String]?, hiddenID _: Int?) {
         prepareremotesnapshotcatalogs(data: data)
         mysnapshotdata?.catalogsanddates = catalogsanddates ?? []
     }
