@@ -41,7 +41,7 @@ struct RsyncUIView: View {
             if userconfigurations.count > 0 {
                 update(userconfigurations[0])
             }
-            await rsyncversion.getrsyncversion()
+            rsyncversion.getrsyncversion()
         }
     }
 
