@@ -45,6 +45,13 @@ struct RsyncParametersView: View {
         NavigationStack(path: $path) {
             HStack {
                 VStack(alignment: .leading) {
+                    // Section(header: headerssh) {
+                    HStack {
+                        setsshpath
+
+                        setsshport
+                    }
+
                     EditRsyncParameter(450, $parameters.parameter8)
                         .onChange(of: parameters.parameter8) {
                             parameters.configuration?.parameter8 = parameters.parameter8
@@ -161,6 +168,39 @@ struct RsyncParametersView: View {
                 focusaborttask = false
                 abort()
             })
+    }
+
+    var setsshpath: some View {
+        EditValue(300, "Ssh keypath and identityfile",
+                  $parameters.sshkeypathandidentityfile)
+            .onChange(of: parameters.sshkeypathandidentityfile) {
+                publisherkeypath.send(parameters.sshkeypathandidentityfile)
+            }
+            .onReceive(
+                publisherkeypath.debounce(
+                    for: .seconds(3),
+                    scheduler: DispatchQueue.main
+                )
+            ) { _ in
+                guard selectedconfig != nil else { return }
+                parameters.sshkeypath(parameters.sshkeypathandidentityfile)
+            }
+    }
+
+    var setsshport: some View {
+        EditValue(150, "Ssh port", $parameters.sshport)
+            .onChange(of: parameters.sshport) {
+                publisherport.send(parameters.sshport)
+            }
+            .onReceive(
+                publisherport.debounce(
+                    for: .seconds(1),
+                    scheduler: DispatchQueue.main
+                )
+            ) { _ in
+                guard selectedconfig != nil else { return }
+                parameters.setsshport(parameters.sshport)
+            }
     }
 }
 
