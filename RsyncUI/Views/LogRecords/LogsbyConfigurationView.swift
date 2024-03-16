@@ -92,6 +92,7 @@ struct LogsbyConfigurationView: View {
 
                 } label: {
                     Image(systemName: "clear")
+                        .foregroundColor(Color(.red))
                 }
                 .help("Reset selections")
             }
