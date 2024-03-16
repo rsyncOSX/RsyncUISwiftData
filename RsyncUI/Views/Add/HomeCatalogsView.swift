@@ -16,27 +16,55 @@ struct Catalognames: Identifiable {
     }
 }
 
+struct AttachedVolumes: Identifiable {
+    let id = UUID()
+    var volumename: URL?
+
+    init(_ volumename: URL) {
+        self.volumename = volumename
+    }
+}
+
 struct HomeCatalogsView: View {
-    @Binding var catalog: String
+    @Bindable var newdata: ObservableAddConfigurations
     @Binding var path: [AddTasks]
-    @State private var selecteduuid: Catalognames.ID?
 
     let homecatalogs: [Catalognames]
+    let attachedVolumes: [AttachedVolumes]
+
+    @State private var selecteduuid: Catalognames.ID?
+    @State private var selectedAttachedVolume: AttachedVolumes.ID?
 
     var body: some View {
-        VStack {
+        HStack {
             Table(homecatalogs, selection: $selecteduuid) {
                 TableColumn("Catalogs") { catalog in
                     Text(catalog.catalogname ?? "")
                 }
             }
-            .onChange(of: selecteduuid) {
-                let names = homecatalogs.filter { $0.id == selecteduuid }
-                if names.count == 1 {
-                    catalog = names[0].catalogname ?? ""
+
+            Table(attachedVolumes, selection: $selectedAttachedVolume) {
+                TableColumn("Attached Volumes") { volume in
+                    Text(volume.volumename?.path() ?? "")
                 }
-                path.removeAll()
             }
         }
+        .onDisappear(perform: {
+            var catalog: String = ""
+            if let index = homecatalogs.firstIndex(where: { $0.id == selecteduuid }) {
+                if let selectedcatalog = homecatalogs[index].catalogname {
+                    catalog = selectedcatalog
+                    newdata.localcatalog = newdata.localhome + "/" + selectedcatalog
+                    newdata.backupID = "Backup of: " + selectedcatalog
+                }
+            }
+            if let index = attachedVolumes.firstIndex(where: { $0.id == selectedAttachedVolume }) {
+                if let selectedvolume = attachedVolumes[index].volumename?.path() {
+                    newdata.remotecatalog = selectedvolume + catalog
+                }
+            } else {
+                newdata.remotecatalog = "/mounted_Volume/" + catalog
+            }
+        })
     }
 }

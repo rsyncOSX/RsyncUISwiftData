@@ -23,7 +23,7 @@ struct AddTaskView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var configurations: [SynchronizeConfiguration]
 
-    @State private var parameters = ObservableAddConfigurations()
+    @State private var newdata = ObservableAddConfigurations()
     @State private var selectedconfig: SynchronizeConfiguration?
     @State private var selecteduuids = Set<SynchronizeConfiguration.ID>()
     // Which view to show
@@ -57,23 +57,23 @@ struct AddTaskView: View {
                             pickerselecttypeoftask
 
                             Section(header: profile) {
-                                if parameters.configuration == nil { setProfile } else {
-                                    EditValue(300, nil, $parameters.profile)
+                                if newdata.configuration == nil { setProfile } else {
+                                    EditValue(300, nil, $newdata.profile)
                                         .focused($focusField, equals: .profile)
                                         .textContentType(.none)
                                         .submitLabel(.continue)
                                         .onAppear(perform: {
-                                            if let profile = parameters.configuration?.profile {
-                                                parameters.profile = profile
+                                            if let profile = newdata.configuration?.profile {
+                                                newdata.profile = profile
                                             }
                                         })
-                                        .onChange(of: parameters.profile) {
-                                            parameters.configuration?.profile = parameters.profile
+                                        .onChange(of: newdata.profile) {
+                                            newdata.configuration?.profile = newdata.profile
                                         }
                                 }
                             }
 
-                            if parameters.selectedrsynccommand == .syncremote {
+                            if newdata.selectedrsynccommand == .syncremote {
                                 VStack(alignment: .leading) { localandremotecatalogsyncremote }
 
                             } else {
@@ -82,7 +82,7 @@ struct AddTaskView: View {
 
                             VStack(alignment: .leading) {
                                 ToggleViewDefault(NSLocalizedString("Don´t add /", comment: ""),
-                                                  $parameters.donotaddtrailingslash)
+                                                  $newdata.donotaddtrailingslash)
                             }
 
                             VStack(alignment: .leading) { synchronizeid }
@@ -99,18 +99,18 @@ struct AddTaskView: View {
                                 .onChange(of: selecteduuids) {
                                     if let index = configurations.firstIndex(where: { $0.id == selecteduuids.first }) {
                                         selectedconfig = configurations[index]
-                                        parameters.updateview(configurations[index])
+                                        newdata.updateview(configurations[index])
                                     } else {
                                         selectedconfig = nil
-                                        parameters.updateview(nil)
+                                        newdata.updateview(nil)
                                     }
                                 }
                                 .copyable(copyitems.filter { selecteduuids.contains($0.id) })
                                 .pasteDestination(for: CopyItem.self) { items in
                                     let maxhiddenID = MaxhiddenID().computemaxhiddenID(configurations)
-                                    parameters.preparecopyandpastetasks(items,
-                                                                        maxhiddenID,
-                                                                        selectedconfig)
+                                    newdata.preparecopyandpastetasks(items,
+                                                                     maxhiddenID,
+                                                                     selectedconfig)
                                     guard items.count > 0 else { return }
                                     confirmcopyandpaste = true
                                 } validator: { items in
@@ -123,8 +123,8 @@ struct AddTaskView: View {
                                 ) {
                                     Button("Copy") {
                                         confirmcopyandpaste = false
-                                        for i in 0 ..< (parameters.copyandpasteconfigurations?.count ?? 0) {
-                                            if let copyitem = parameters.copyandpasteconfigurations?[i] {
+                                        for i in 0 ..< (newdata.copyandpasteconfigurations?.count ?? 0) {
+                                            if let copyitem = newdata.copyandpasteconfigurations?[i] {
                                                 modelContext.insert(copyitem)
                                             }
                                         }
@@ -145,13 +145,13 @@ struct AddTaskView: View {
                 case .remoteuserField:
                     focusField = .remoteserverField
                 case .remoteserverField:
-                    if parameters.configuration == nil {
+                    if newdata.configuration == nil {
                         addconfig()
                     }
                     focusField = nil
                 case .backupIDField:
-                    if parameters.remotestorageislocal == true,
-                       parameters.configuration == nil
+                    if newdata.remotestorageislocal == true,
+                       newdata.configuration == nil
                     {
                         addconfig()
                     } else {
@@ -161,8 +161,8 @@ struct AddTaskView: View {
                     return
                 }
             }
-            .alert(isPresented: $parameters.alerterror,
-                   content: { Alert(localizedError: parameters.error)
+            .alert(isPresented: $newdata.alerterror,
+                   content: { Alert(localizedError: newdata.error)
                    })
 
             .navigationDestination(for: AddTasks.self) { which in
@@ -173,7 +173,7 @@ struct AddTaskView: View {
                     Button {
                         addconfig()
                     } label: {
-                        Image(systemName: "plus.app.fill")
+                        Image(systemName: "return")
                             .foregroundColor(Color(.blue))
                     }
                     .help("Add task")
@@ -195,10 +195,10 @@ struct AddTaskView: View {
     func makeView(view: AddTaskDestinationView) -> some View {
         switch view {
         case .homecatalogs:
-            HomeCatalogsView(catalog: $parameters.assistlocalcatalog,
+            HomeCatalogsView(newdata: newdata,
                              path: $path,
                              homecatalogs: {
-                                 if let atpath = NamesandPaths().userHomeDirectoryPath {
+                                 if let atpath = NamesandPaths(nil).userHomeDirectoryPath {
                                      var catalogs = [Catalognames]()
                                      do {
                                          for folders in try Folder(path: atpath).subfolders {
@@ -210,9 +210,32 @@ struct AddTaskView: View {
                                      }
                                  }
                                  return []
+                             }(),
+
+                             attachedVolumes: {
+                                 let keys: [URLResourceKey] = [.volumeNameKey,
+                                                               .volumeIsRemovableKey,
+                                                               .volumeIsEjectableKey]
+                                 let paths = FileManager()
+                                     .mountedVolumeURLs(includingResourceValuesForKeys: keys,
+                                                        options: [])
+                                 var volumesarray = [AttachedVolumes]()
+                                 if let urls = paths {
+                                     for url in urls {
+                                         let components = url.pathComponents
+                                         if components.count > 1, components[1] == "Volumes" {
+                                             volumesarray.append(AttachedVolumes(url))
+                                         }
+                                     }
+                                 }
+                                 if volumesarray.count > 0 {
+                                     return volumesarray
+                                 } else {
+                                     return []
+                                 }
                              }())
-                .onChange(of: parameters.assistlocalcatalog) {
-                    parameters.assistfunclocalcatalog(parameters.assistlocalcatalog)
+                .onChange(of: newdata.assistlocalcatalog) {
+                    newdata.assistfunclocalcatalog(newdata.assistlocalcatalog)
                 }
         }
     }
@@ -220,17 +243,17 @@ struct AddTaskView: View {
     // Add and edit text values
     var setlocalcatalogsyncremote: some View {
         EditValue(300, NSLocalizedString("Add remote as local catalog - required", comment: ""),
-                  $parameters.localcatalog)
+                  $newdata.localcatalog)
     }
 
     var setremotecatalogsyncremote: some View {
         EditValue(300, NSLocalizedString("Add local as remote catalog - required", comment: ""),
-                  $parameters.remotecatalog)
+                  $newdata.remotecatalog)
     }
 
     var setlocalcatalog: some View {
         EditValue(300, NSLocalizedString("Add local catalog - required", comment: ""),
-                  $parameters.localcatalog)
+                  $newdata.localcatalog)
             .focused($focusField, equals: .localcatalogField)
             .textContentType(.none)
             .submitLabel(.continue)
@@ -238,7 +261,7 @@ struct AddTaskView: View {
 
     var setremotecatalog: some View {
         EditValue(300, NSLocalizedString("Add remote catalog - required", comment: ""),
-                  $parameters.remotecatalog)
+                  $newdata.remotecatalog)
             .focused($focusField, equals: .remotecatalogField)
             .textContentType(.none)
             .submitLabel(.continue)
@@ -251,7 +274,7 @@ struct AddTaskView: View {
 
     var setProfile: some View {
         EditValue(300, NSLocalizedString(SharedReference.shared.defaultprofile, comment: ""),
-                  $parameters.profile)
+                  $newdata.profile)
             .focused($focusField, equals: .profile)
             .textContentType(.none)
             .submitLabel(.continue)
@@ -266,39 +289,39 @@ struct AddTaskView: View {
         Section(header: headerlocalremote) {
             HStack {
                 // localcatalog
-                if parameters.configuration == nil { setlocalcatalog } else {
-                    EditValue(300, nil, $parameters.localcatalog)
+                if newdata.configuration == nil { setlocalcatalog } else {
+                    EditValue(300, nil, $newdata.localcatalog)
                         .focused($focusField, equals: .localcatalogField)
                         .textContentType(.none)
                         .submitLabel(.continue)
                         .onAppear(perform: {
-                            if let catalog = parameters.configuration?.localCatalog {
-                                parameters.localcatalog = catalog
+                            if let catalog = newdata.configuration?.localCatalog {
+                                newdata.localcatalog = catalog
                             }
                         })
-                        .onChange(of: parameters.localcatalog) {
-                            parameters.configuration?.localCatalog = parameters.localcatalog
+                        .onChange(of: newdata.localcatalog) {
+                            newdata.configuration?.localCatalog = newdata.localcatalog
                         }
                 }
-                OpencatalogView(catalog: $parameters.localcatalog, choosecatalog: choosecatalog)
+                OpencatalogView(catalog: $newdata.localcatalog, choosecatalog: choosecatalog)
             }
             HStack {
                 // remotecatalog
-                if parameters.configuration == nil { setremotecatalog } else {
-                    EditValue(300, nil, $parameters.remotecatalog)
+                if newdata.configuration == nil { setremotecatalog } else {
+                    EditValue(300, nil, $newdata.remotecatalog)
                         .focused($focusField, equals: .remotecatalogField)
                         .textContentType(.none)
                         .submitLabel(.continue)
                         .onAppear(perform: {
-                            if let catalog = parameters.configuration?.offsiteCatalog {
-                                parameters.remotecatalog = catalog
+                            if let catalog = newdata.configuration?.offsiteCatalog {
+                                newdata.remotecatalog = catalog
                             }
                         })
-                        .onChange(of: parameters.remotecatalog) {
-                            parameters.configuration?.offsiteCatalog = parameters.remotecatalog
+                        .onChange(of: newdata.remotecatalog) {
+                            newdata.configuration?.offsiteCatalog = newdata.remotecatalog
                         }
                 }
-                OpencatalogView(catalog: $parameters.remotecatalog, choosecatalog: choosecatalog)
+                OpencatalogView(catalog: $newdata.remotecatalog, choosecatalog: choosecatalog)
             }
         }
     }
@@ -307,34 +330,34 @@ struct AddTaskView: View {
         Section(header: headerlocalremote) {
             HStack {
                 // localcatalog
-                if parameters.configuration == nil { setlocalcatalogsyncremote } else {
-                    EditValue(300, nil, $parameters.localcatalog)
+                if newdata.configuration == nil { setlocalcatalogsyncremote } else {
+                    EditValue(300, nil, $newdata.localcatalog)
                         .onAppear(perform: {
-                            if let catalog = parameters.configuration?.localCatalog {
-                                parameters.localcatalog = catalog
+                            if let catalog = newdata.configuration?.localCatalog {
+                                newdata.localcatalog = catalog
                             }
                         })
                 }
-                OpencatalogView(catalog: $parameters.localcatalog, choosecatalog: choosecatalog)
+                OpencatalogView(catalog: $newdata.localcatalog, choosecatalog: choosecatalog)
             }
             HStack {
                 // remotecatalog
-                if parameters.configuration == nil { setremotecatalogsyncremote } else {
-                    EditValue(300, nil, $parameters.remotecatalog)
+                if newdata.configuration == nil { setremotecatalogsyncremote } else {
+                    EditValue(300, nil, $newdata.remotecatalog)
                         .onAppear(perform: {
-                            if let catalog = parameters.configuration?.offsiteCatalog {
-                                parameters.remotecatalog = catalog
+                            if let catalog = newdata.configuration?.offsiteCatalog {
+                                newdata.remotecatalog = catalog
                             }
                         })
                 }
-                OpencatalogView(catalog: $parameters.remotecatalog, choosecatalog: choosecatalog)
+                OpencatalogView(catalog: $newdata.remotecatalog, choosecatalog: choosecatalog)
             }
         }
     }
 
     var setID: some View {
         EditValue(300, NSLocalizedString("Add synchronize ID", comment: ""),
-                  $parameters.backupID)
+                  $newdata.backupID)
             .focused($focusField, equals: .backupIDField)
             .textContentType(.none)
             .submitLabel(.continue)
@@ -348,18 +371,18 @@ struct AddTaskView: View {
     var synchronizeid: some View {
         Section(header: headerID) {
             // Synchronize ID
-            if parameters.configuration == nil { setID } else {
-                EditValue(300, nil, $parameters.backupID)
+            if newdata.configuration == nil { setID } else {
+                EditValue(300, nil, $newdata.backupID)
                     .focused($focusField, equals: .backupIDField)
                     .textContentType(.none)
                     .submitLabel(.continue)
                     .onAppear(perform: {
-                        if let id = parameters.configuration?.backupID {
-                            parameters.backupID = id
+                        if let id = newdata.configuration?.backupID {
+                            newdata.backupID = id
                         }
                     })
-                    .onChange(of: parameters.backupID) {
-                        parameters.configuration?.backupID = parameters.backupID
+                    .onChange(of: newdata.backupID) {
+                        newdata.configuration?.backupID = newdata.backupID
                     }
             }
         }
@@ -367,7 +390,7 @@ struct AddTaskView: View {
 
     var setremoteuser: some View {
         EditValue(300, NSLocalizedString("Add remote user", comment: ""),
-                  $parameters.remoteuser)
+                  $newdata.remoteuser)
             .focused($focusField, equals: .remoteuserField)
             .textContentType(.none)
             .submitLabel(.continue)
@@ -375,7 +398,7 @@ struct AddTaskView: View {
 
     var setremoteserver: some View {
         EditValue(300, NSLocalizedString("Add remote server", comment: ""),
-                  $parameters.remoteserver)
+                  $newdata.remoteserver)
             .focused($focusField, equals: .remoteserverField)
             .textContentType(.none)
             .submitLabel(.return)
@@ -389,40 +412,40 @@ struct AddTaskView: View {
     var remoteuserandserver: some View {
         Section(header: headerremote) {
             // Remote user
-            if parameters.configuration == nil { setremoteuser } else {
-                EditValue(300, nil, $parameters.remoteuser)
+            if newdata.configuration == nil { setremoteuser } else {
+                EditValue(300, nil, $newdata.remoteuser)
                     .focused($focusField, equals: .remoteuserField)
                     .textContentType(.none)
                     .submitLabel(.continue)
                     .onAppear(perform: {
-                        if let user = parameters.configuration?.offsiteUsername {
-                            parameters.remoteuser = user
+                        if let user = newdata.configuration?.offsiteUsername {
+                            newdata.remoteuser = user
                         }
                     })
-                    .onChange(of: parameters.remoteuser) {
-                        parameters.configuration?.offsiteUsername = parameters.remoteuser
+                    .onChange(of: newdata.remoteuser) {
+                        newdata.configuration?.offsiteUsername = newdata.remoteuser
                     }
             }
             // Remote server
-            if parameters.configuration == nil { setremoteserver } else {
-                EditValue(300, nil, $parameters.remoteserver)
+            if newdata.configuration == nil { setremoteserver } else {
+                EditValue(300, nil, $newdata.remoteserver)
                     .focused($focusField, equals: .remoteserverField)
                     .textContentType(.none)
                     .submitLabel(.return)
                     .onAppear(perform: {
-                        if let server = parameters.configuration?.offsiteServer {
-                            parameters.remoteserver = server
+                        if let server = newdata.configuration?.offsiteServer {
+                            newdata.remoteserver = server
                         }
                     })
-                    .onChange(of: parameters.remoteserver) {
-                        parameters.configuration?.offsiteServer = parameters.remoteserver
+                    .onChange(of: newdata.remoteserver) {
+                        newdata.configuration?.offsiteServer = newdata.remoteserver
                     }
             }
         }
     }
 
     var selectpickervalue: TypeofTask {
-        switch parameters.configuration?.task {
+        switch newdata.configuration?.task {
         case SharedReference.shared.synchronize:
             return .synchronize
         case SharedReference.shared.syncremote:
@@ -436,13 +459,13 @@ struct AddTaskView: View {
 
     var pickerselecttypeoftask: some View {
         Picker(NSLocalizedString("Task", comment: "") + ":",
-               selection: $parameters.selectedrsynccommand)
+               selection: $newdata.selectedrsynccommand)
         {
             ForEach(TypeofTask.allCases) { Text($0.description)
                 .tag($0)
             }
-            .onChange(of: parameters.configuration) {
-                parameters.selectedrsynccommand = selectpickervalue
+            .onChange(of: newdata.configuration) {
+                newdata.selectedrsynccommand = selectpickervalue
             }
         }
         .pickerStyle(DefaultPickerStyle())
@@ -463,7 +486,7 @@ struct AddTaskView: View {
 
 extension AddTaskView {
     func addconfig() {
-        if let newItem = parameters.addconfig() {
+        if let newItem = newdata.addconfig() {
             newItem.hiddenID = MaxhiddenID().computemaxhiddenID(configurations)
             modelContext.insert(newItem)
         }
