@@ -145,7 +145,7 @@ struct RsyncParametersView: View {
         .padding()
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func makeView(view: ParametersDestinationView) -> some View {
         switch view {
         case .verify:

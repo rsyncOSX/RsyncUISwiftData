@@ -45,7 +45,7 @@ struct Sidebar: View {
         })
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func selectView(_ view: Sidebaritems) -> some View {
         switch view {
         case .tasks:

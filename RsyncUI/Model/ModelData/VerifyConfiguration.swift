@@ -44,12 +44,6 @@ struct AppendTask {
     var newoffsiteUsername: String?
     var newoffsiteServer: String?
     var newbackupID: String?
-    // Pre and post tasks
-    var newexecutepretask: Bool?
-    var newpretask: String?
-    var newexecuteposttask: Bool?
-    var newposttask: String?
-    var newhaltshelltasksonerror: Bool?
     // Use hiddenID for update
     var hiddenID: Int?
 
@@ -60,12 +54,7 @@ struct AppendTask {
          _ trailingbackslash: Bool,
          _ offsiteUsername: String?,
          _ offsiteServer: String?,
-         _ backupID: String?,
-         _ executepretask: Bool?,
-         _ pretask: String?,
-         _ executeposttask: Bool?,
-         _ posttask: String?,
-         _ haltshelltasksonerror: Bool?)
+         _ backupID: String?)
     {
         newprofile = profile
         newtask = task
@@ -75,11 +64,6 @@ struct AppendTask {
         newoffsiteUsername = offsiteUsername
         newoffsiteServer = offsiteServer
         newbackupID = backupID
-        newexecutepretask = executepretask
-        newpretask = pretask
-        newexecuteposttask = executeposttask
-        newposttask = posttask
-        newhaltshelltasksonerror = haltshelltasksonerror
     }
 
     init(_ profile: String,
@@ -90,11 +74,6 @@ struct AppendTask {
          _ offsiteUsername: String?,
          _ offsiteServer: String?,
          _ backupID: String?,
-         _ executepretask: Bool?,
-         _ pretask: String?,
-         _ executeposttask: Bool?,
-         _ posttask: String?,
-         _ haltshelltasksonerror: Bool?,
          _ updatedhiddenID: Int)
     {
         newprofile = profile
@@ -105,11 +84,6 @@ struct AppendTask {
         newoffsiteUsername = offsiteUsername
         newoffsiteServer = offsiteServer
         newbackupID = backupID
-        newexecutepretask = executepretask
-        newpretask = pretask
-        newexecuteposttask = executeposttask
-        newposttask = posttask
-        newhaltshelltasksonerror = haltshelltasksonerror
         hiddenID = updatedhiddenID
     }
 }
@@ -186,35 +160,6 @@ final class VerifyConfiguration: Connected {
         if data.newtask == SharedReference.shared.snapshot {
             // If connected create base remote snapshotcatalog
             snapshotcreateremotecatalog(config: newconfig)
-        }
-        // Add pre and post task if set
-        // Pre task
-        if data.newpretask?.isEmpty == false {
-            if data.newexecutepretask == true {
-                newconfig.executepretask = 1
-            } else {
-                newconfig.executepretask = 0
-            }
-            newconfig.pretask = data.newpretask
-        } else {
-            newconfig.executepretask = 0
-        }
-        // Post task
-        if data.newposttask?.isEmpty == false {
-            if data.newexecuteposttask == true {
-                newconfig.executeposttask = 1
-            } else {
-                newconfig.executeposttask = 0
-            }
-            newconfig.posttask = data.newposttask
-        } else {
-            newconfig.executeposttask = 0
-        }
-        // Halt pretask on error in posttask
-        if data.newhaltshelltasksonerror == true, newconfig.posttask?.isEmpty == false {
-            newconfig.haltshelltasksonerror = 1
-        } else {
-            newconfig.haltshelltasksonerror = 0
         }
         // Return a new configuration to be appended
         return newconfig

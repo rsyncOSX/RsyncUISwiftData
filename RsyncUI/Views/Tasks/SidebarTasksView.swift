@@ -36,7 +36,7 @@ struct SidebarTasksView: View {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func makeView(view: DestinationView) -> some View {
         switch view {
         case .executestimatedview:

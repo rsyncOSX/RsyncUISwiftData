@@ -44,13 +44,6 @@ final class ObservableAddConfigurations {
     var error: Error = Validatedpath.noerror
     var alerterror: Bool = false
 
-    // For update post and pretasks
-    var enablepre: Bool = false
-    var enablepost: Bool = false
-    var pretask: String = ""
-    var posttask: String = ""
-    var haltshelltasksonerror: Bool = false
-
     // Set true if remote storage is a local attached Volume
     var remotestorageislocal: Bool = false
     var configuration: SynchronizeConfiguration?
@@ -68,13 +61,7 @@ final class ObservableAddConfigurations {
                                  donotaddtrailingslash,
                                  remoteuser,
                                  remoteserver,
-                                 backupID,
-                                 // add post and pretask in it own view, set nil here
-                                 nil,
-                                 nil,
-                                 nil,
-                                 nil,
-                                 nil)
+                                 backupID)
         if let newconfig = VerifyConfiguration().verify(getdata) {
             reset()
             return newconfig
@@ -131,44 +118,6 @@ final class ObservableAddConfigurations {
             return true
         } catch {
             return false
-        }
-    }
-
-    private func updatepreandpost() {
-        if let config = configuration {
-            // pre task
-            pretask = config.pretask ?? ""
-            if config.pretask != nil {
-                if config.executepretask == 1 {
-                    enablepre = true
-                } else {
-                    enablepre = false
-                }
-            } else {
-                enablepre = false
-            }
-
-            // post task
-            posttask = config.posttask ?? ""
-            if config.posttask != nil {
-                if config.executeposttask == 1 {
-                    enablepost = true
-                } else {
-                    enablepost = false
-                }
-            } else {
-                enablepost = false
-            }
-
-            if config.posttask != nil {
-                if config.haltshelltasksonerror == 1 {
-                    haltshelltasksonerror = true
-                } else {
-                    haltshelltasksonerror = false
-                }
-            } else {
-                haltshelltasksonerror = false
-            }
         }
     }
 

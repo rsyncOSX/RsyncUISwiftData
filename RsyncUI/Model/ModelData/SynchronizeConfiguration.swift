@@ -75,16 +75,10 @@ final class SynchronizeConfiguration: Identifiable {
     // Snapshots, day to save and last = 1 or every last=0
     var snapdayoffweek: String?
     var snaplast: Int?
-    // Pre and post tasks
-    var executepretask: Int?
-    var pretask: String?
-    var executeposttask: Int?
-    var posttask: String?
-    var haltshelltasksonerror: Int?
     // Profile
     var profile: String = "Default profile"
 
-    init(id: UUID = UUID(), hiddenID: Int, task: String, localCatalog: String, offsiteCatalog: String, offsiteUsername: String, parameter1: String, parameter2: String, parameter3: String, parameter4: String, parameter5: String, parameter6: String, offsiteServer: String, backupID: String, dateRun: String? = nil, snapshotnum: Int? = nil, parameter8: String? = nil, parameter9: String? = nil, parameter10: String? = nil, parameter11: String? = nil, parameter12: String? = nil, parameter13: String? = nil, parameter14: String? = nil, rsyncdaemon: Int? = nil, sshport: Int? = nil, sshkeypathandidentityfile: String? = nil, dayssincelastbackup: String? = nil, snapdayoffweek: String? = nil, snaplast: Int? = nil, executepretask: Int? = nil, pretask: String? = nil, executeposttask: Int? = nil, posttask: String? = nil, haltshelltasksonerror: Int? = nil, profile: String) {
+    init(id: UUID = UUID(), hiddenID: Int, task: String, localCatalog: String, offsiteCatalog: String, offsiteUsername: String, parameter1: String, parameter2: String, parameter3: String, parameter4: String, parameter5: String, parameter6: String, offsiteServer: String, backupID: String, dateRun: String? = nil, snapshotnum: Int? = nil, parameter8: String? = nil, parameter9: String? = nil, parameter10: String? = nil, parameter11: String? = nil, parameter12: String? = nil, parameter13: String? = nil, parameter14: String? = nil, rsyncdaemon: Int? = nil, sshport: Int? = nil, sshkeypathandidentityfile: String? = nil, dayssincelastbackup: String? = nil, snapdayoffweek: String? = nil, snaplast: Int? = nil, profile: String) {
         self.id = id
         self.hiddenID = hiddenID
         self.task = task
@@ -114,11 +108,6 @@ final class SynchronizeConfiguration: Identifiable {
         self.dayssincelastbackup = dayssincelastbackup
         self.snapdayoffweek = snapdayoffweek
         self.snaplast = snaplast
-        self.executepretask = executepretask
-        self.pretask = pretask
-        self.executeposttask = executeposttask
-        self.posttask = posttask
-        self.haltshelltasksonerror = haltshelltasksonerror
         self.profile = profile
     }
 

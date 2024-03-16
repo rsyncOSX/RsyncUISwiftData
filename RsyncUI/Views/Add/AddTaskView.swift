@@ -191,7 +191,7 @@ struct AddTaskView: View {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func makeView(view: AddTaskDestinationView) -> some View {
         switch view {
         case .homecatalogs:
