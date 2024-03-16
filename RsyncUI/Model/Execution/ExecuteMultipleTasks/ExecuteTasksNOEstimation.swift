@@ -33,7 +33,7 @@ final class ExecuteTasksNOEstimation {
             localupdatedates(configrecords)
             localupdatelogrecords(schedulerecords)
             localexecuteasyncnoestimation?.asyncexecutealltasksnoestiamtioncomplete()
-            Logger.process.info("class ExecuteTasksAsync: async execution is completed")
+            Logger.process.info("class ExecuteTasksNOEstimation: execution is completed")
             return
         }
         if let localhiddenID = stackoftasktobeestimated?.removeLast() {
