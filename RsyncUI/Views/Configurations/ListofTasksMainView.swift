@@ -47,7 +47,7 @@ struct ListofTasksMainView: View {
                 filterstring.isEmpty ? true : $0.profile.contains(filterstring)
         }, selection: $selecteduuids) {
             TableColumn("%") { data in
-                if data.hiddenID == executeprogressdetails.hiddenIDatwork, max > 0 {
+                if data.hiddenID == executeprogressdetails.hiddenIDatwork, max > 0, progress <= max {
                     ProgressView("",
                                  value: progress,
                                  total: max)
