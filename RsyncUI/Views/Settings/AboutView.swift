@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct AboutView: View {
-    @State private var newversion = CheckfornewversionofRsyncUI()
-
     let iconbystring: String = NSLocalizedString("Icon by: Zsolt Sándor", comment: "")
     let changelog: String = "https://rsyncui.netlify.app/post/changelog/"
 
@@ -45,12 +43,7 @@ struct AboutView: View {
 
             rsyncversionshortstring
 
-            if newversion.notifynewversion { notifynewversion }
-
             Spacer()
-        }
-        .task {
-            await newversion.getversionsofrsyncui()
         }
         .toolbar {
             ToolbarItem {
@@ -84,23 +77,6 @@ struct AboutView: View {
         }
         .font(.caption)
         .padding(3)
-    }
-
-    var notifynewversion: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15).fill(Color.gray.opacity(0.1))
-            Text("New version")
-                .font(.title3)
-                .foregroundColor(Color.blue)
-        }
-        .frame(width: 200, height: 20, alignment: .center)
-        .background(RoundedRectangle(cornerRadius: 25).stroke(Color.gray, lineWidth: 2))
-        .onAppear(perform: {
-            // Show updated for 1 second
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                newversion.notifynewversion = false
-            }
-        })
     }
 }
 
