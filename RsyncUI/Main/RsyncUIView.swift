@@ -13,7 +13,6 @@ struct RsyncUIView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var userconfigurations: [UserConfiguration]
 
-    @State private var newversion = CheckfornewversionofRsyncUI()
     @State private var rsyncversion = Rsyncversion()
     @State private var start: Bool = true
     @State var selecteduuids = Set<SynchronizeConfiguration.ID>()
@@ -43,7 +42,6 @@ struct RsyncUIView: View {
                 update(userconfigurations[0])
             }
             rsyncversion.getrsyncversion()
-            await newversion.getversionsofrsyncui()
         }
     }
 
